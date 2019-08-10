@@ -1,0 +1,362 @@
+\section{Background}
+
+In this section, we present some results which will be used in the following sections. These results are presented mostly in \cite{Yong2015}.
+
+Let us introduce some spaces. For any $0\leq t< T<\infty$ and $1\leq p <\infty$, define
+
+\begin{equation*}
+C([t,T];\mathbb{R}^n)=\{\varphi:[t,T]\rightarrow \mathbb{R}^n | \varphi(\cdot)\,\mbox{is continuous}\},
+\end{equation*}
+
+\begin{equation*}
+\displaystyle L^{\infty}(t,T;\mathbb{R}^n)=\{\varphi:[t,T]\rightarrow \mathbb{R}^n | \varphi(\cdot)\,\mbox{measurable},\, \displaystyle \mbox{esssup}_{s\in[t,T]}|\varphi(s)|<\infty\},
+\end{equation*}
+
+\begin{equation*}
+\displaystyle L^{p}(t,T;\mathbb{R}^n)=\{\varphi:[t,T]\rightarrow \mathbb{R}^n | \varphi(\cdot)\,\mbox{measurable},\, \int_{t}^{T}|\varphi(s)|^p ds<\infty\},
+\end{equation*}
+
+which are Banach space under the following norms, respectively, 
+
+\begin{equation*}
+||\varphi(\cdot)||_{C([t,T];\mathbb{R}^n)}=\sup_{s\in[t,T]} |\varphi(s)|,\,\mbox{for every}\, \varphi(\cdot) \in C([t,T];\mathbb{R}^n),
+\end{equation*}
+
+\begin{equation*}
+||\varphi(\cdot)||_{L^{\infty}(t,T;\mathbb{R}^n)}=\mbox{esssup}_{s\in[t,T]} |\varphi(s)|,\,\mbox{for every}\, \varphi(\cdot) \in L^{\infty}(t,T;\mathbb{R}^n),
+\end{equation*}
+
+where $\mbox{esssup} f:=\inf\{M | \mu(\{x: f(x)>M\})=0\}$,
+
+\begin{equation*}
+||\varphi(\cdot)||_{L^{p}(t,T;\mathbb{R}^n)}=\left(\int_{t}^{T}|\varphi(s)|^p ds\right)^\frac{1}{p},\,\mbox{for every}\, \varphi(\cdot) \in L^{p}(t,T;\mathbb{R}^n).
+\end{equation*}
+
+We now present some standard results.
+
+\begin{theorem}\label{BFT}[Banach fixed point theorem]
+	Let $\mathbb{X}$ be a Banach space, and $S: \mathbb{X} \rightarrow \mathbb{X}$ be a map satisfying 
+	
+	\begin{equation}\label{eq1.15}
+	||S(x)-S(y)||\leq \alpha ||x-y||,\,\mbox{for every}\, x,y \in \mathbb{X},
+	\end{equation}
+with $\alpha \in (0,1)$. There exists a unique $\bar{x} \in \mathbb{X}$ such that $S(\bar{x})=\bar{x}$.
+\end{theorem}
+\begin{proof}
+	Let see that the map $S$ is continuous. Given $\epsilon>0$, and $||x-y||<\delta$ with $\delta=\frac{\epsilon}{\alpha}$, we have by \ref{eq1.15}
+	
+	$$||S(x)-S(y)||\leq \alpha ||x-y||<\epsilon.$$
+	
+	For every $x,y \in \mathbb{X}$. Now pick any $x_0 \in \mathbb{X}$, and define the sequence $x_k=S^k(x_0)$, $k\geq 1$. 
+%using telescopic sequence
+Then for any $k,l\geq 1$,
+\begin{eqnarray*}
+||x_{k+l}-x_{k}||&\leq& ||\sum_{i=k+1}^{k+l}(x_i-x_{i-1})||=||\sum_{i=k+1}^{k+l}(S^i(x_0)-S^{i-1}(x_0))||\\
+&\leq& \sum_{i=k+1}^{k+l}||(S^i(x_0)-S^{i-1}(x_0))||\leq \sum_{i=k+1}^{k+l} \alpha^k||x_1-x_0||.
+\end{eqnarray*}
+
+Thus, $\{x_k\}_{k>0}$ is a Cauchy sequence. Consequently, there exists a unique $\bar{x} \in \mathbb{X}$ such that 
+
+$$\lim_{k\rightarrow \infty}||x_k-\bar{x}||=0.$$
+
+Then by continuity of $S$, we obtain
+
+\begin{center}
+	$\bar{x}=\lim\limits_{k\rightarrow \infty}=\lim\limits_{k \rightarrow \infty} S(x_{k-1})=S(\bar{x}).$
+\end{center}
+
+This means that $\bar{x}$ is a fixed point of $S$. Finally, if $\bar{x}$ and $\tilde{x}$ are two fixed point. Then
+
+$$||\bar{x}-\tilde{x}||=||S(\bar{x})-S(\tilde{x})||\leq \alpha ||\bar{x}-\tilde{x}||.$$
+
+Hence, $\bar{x}=\tilde{x}$, proving the uniqueness.	
+\end{proof}
+
+\begin{theorem}\label{AAT}[Arzela-Ascoli]
+	Let $\mathcal{Z}\subseteq C([t,T];\mathbb{R}^n)$ be an infinite set which is uniformly bounded and equicontinuous, i.e.
+	$$\sup_{\varphi(\cdot)\in \mathcal{Z}}||\varphi(\cdot)||_{C([t,T];\mathbb{R}^n)}<\infty,$$
+	
+	and for any $\epsilon>0$, there exists a $\delta>0$ such that 
+	\begin{center}
+		$|\varphi(t)-\varphi(s)|<\epsilon$, for every $|t-s|<\delta$, $\varphi(\cdot)\in \mathcal{Z}$.
+	\end{center}
+	
+	Then there exists a sequence $\varphi_k(\cdot)\in \mathcal{Z}$ such that 
+	
+	$$\lim_{k\rightarrow \infty}|\varphi_k(\cdot)-\bar{\varphi}(\cdot)||_{C([t,T];\mathbb{R}^n)}=0,$$
+
+for some $\bar{\varphi}(\cdot) \in C([t,T];\mathbb{R}^n)$.	
+\end{theorem}
+
+\begin{proof}
+Let define $D:=\{t_k\}_{k\geq 1}$ be a dense set of $[t,T]$. For any $k\geq 1$, the set $\{\varphi(t_1)|\varphi(\cdot)\in \mathcal{Z}\}$ is bounded. Thus, there exists aa sequence denoted by $\{\varphi_{\sigma_1(i)}(t_1)\}$ converging some point in $\mathbb{R}^n$, denoted by $\bar{\varphi}(t_1)$. Next, the set $\{\varphi_{\sigma_1(i)}(t_2)\}$ is bounded.
+
+Thus, we may let $\{\varphi_{\sigma_2(i)}(t_2)\}$ be a subsequence of $\{\varphi_{\sigma_1(i)}(t_2)\}$, which is convergent to some point in $\mathbb{R}^n$ denoted by $\bar{\varphi}(t_2)$. Continue this process, we obtain a function $\bar{\varphi}:D\rightarrow \mathbb{R}$. by letting
+
+$$\bar{\varphi}(\cdot)=\varphi_{\sigma_i(i)}(\cdot),\, i\geq 1.$$
+
+We have 
+
+$$\lim_{i\rightarrow \infty} \bar{\varphi}_i(s)=\bar{\varphi}(s)\,\mbox{for every}\, s\in D.$$
+
+By equi-continuity of the sequence $\{\varphi_k(\cdot)\}$, we see that for any $\epsilon>0$ there exits a $\delta=\delta(\epsilon)>0$, independent of $i\geq 1$ such that
+
+\begin{equation}\label{eq1.16}
+	|\bar{\varphi}_i(s_1)-\bar{\varphi}_i(s_2)|<\epsilon\, \mbox{for every}\, s_1,s_2\in D, |s_1-s_2|<\delta.
+\end{equation}
+
+Then letting $i\rightarrow \infty$, we obtain
+
+$$|\bar{\varphi}(s_1)-\bar{\varphi}(s_2)|\leq \epsilon\,\, \mbox{for every}\, s_1,s_2\in D, |s_1-s_2|<\delta.$$
+
+This means that $\bar{\varphi}:D\rightarrow \mathbb{R}^n$ is uniformly continuous on $D$. Consequently, we may extend $\bar{\varphi}(\cdot)$ on $\bar{D}=[t,T]$ which is still continuous. Finally, for any $\epsilon>0$, let $\delta>0$ be such that (\ref{eq1.16}) holds and by compactness of $[t,T]$, let $S_{\delta}=\{s_j,1\leq j\leq M\}\subseteq D$ with $M>1$ depending on $\epsilon>0$ such that
+
+$$[t,T]\subseteq \bigcup^M_{j=1}(s_j-\delta,s_j+\delta).$$
+
+Next, we may let $i_0>1$ such that
+
+
+	$$
+	    \bar{\varphi}_i(s_j)-\bar{\varphi}(s_j)|<\epsilon, 
+	    \quad
+	    i\geq i_0, 1\leq j\leq M
+	$$.
+
+
+Then for any $s\in [t,T]$, there is an $s_j\in S_{\delta}$ such that $|s-s_j|<\delta$. Consequently 
+
+$$|\bar{\varphi}_i(s)-\bar{\varphi}(s)|\leq |\bar{\varphi}_i(s)-\bar{\varphi}_i(s_j)|+|\bar{\varphi}_i(s_j)-\bar{\varphi}(s_j)|+|\bar{\varphi}(s_j)-\bar{\varphi}(s)|\leq 3\epsilon.$$
+
+This show that $\varphi_i(\cdot)$ converges to $\bar{\varphi} (\cdot)$ uniformly  in $s\in [t,T]$.
+\end{proof}
+
+\begin{theorem}\label{BST}[Banach-Saks]
+Let $\varphi_k(\cdot)\in L^2(a,b;\mathbb{R}^n)$ be a sequence which is weakly convergent to $\bar{\varphi}(\cdot)\in L^2(a,b;\mathbb{R}^n)$, i.e.,
+
+$$\lim_{k\rightarrow \infty} \int_{a}^{b} \langle\varphi_{k}(s)-\bar{\varphi}(s),\eta(s)\rangle ds,\,\mbox{for every}\,\, \eta\in L^2(a,b;\mathbb{R}^n).$$
+
+Then there is a subsequence $\{\varphi_{k_j}(\cdot)\}$ such that
+
+$$\lim_{k\rightarrow \infty}||\frac{1}{N}\sum_{j=1}^{N}\varphi_{k_j}(\cdot)-\bar{\varphi}(\cdot)||_{L^2(a,b;\mathbb{R}^n)}=0.$$
+\end{theorem}
+\begin{proof}
+	Whitout loss of generality, first we consider that $\bar{\varphi}(\cdot)=0$. Let $k_1=1$. By the weak convergence of $\varphi_k(\cdot)$, we may find $k_1<k_2<\cdots <k_N$ such that
+	
+	$$|\int_{a}^{b}\langle\varphi_{k_i}(s),\varphi_{k_j}(s)\rangle ds|<\frac{1}{N}\,\, 1\leq i<j\leq N$$
+	
+	observe
+	\begin{eqnarray*}
+	||\frac{1}{N}\sum_{i=1}^{N}\varphi_{k_i}(\cdot)||^2_{L^2(a,b;\mathbb{R}^2)}&=&\frac{1}{N^2}\int_{a}^{b}|\sum_{i=1}^{N}\varphi_{k_i}(s)|^2 ds = \frac{1}{N^2}\int \sum_{i,j=1}^{N}\langle\varphi_{k_i}(s),\varphi_{k_j}(s)\rangle ds\\
+	&=&\frac{1}{N^2}\sum_{i=1}^{N}||\varphi_{k_i}(\cdot)||^2_{L^2(a,b;\mathbb{R}^n)}+\frac{2}{N^2}\sum_{1\leq i<j\leq N}\int_{a}^{b}\langle\varphi_{k_i}(s),\varphi_{k_j}(s)\rangle ds\\
+	&\leq& \frac{1}{N}\sup_{i\geq 1}||\varphi_{k_i}(\cdot)||^2_{L^2(a,b;\mathbb{R}^n)}+\frac{2}{N^3}\frac{N(N-1)}{2}\\
+	&\leq& \frac{1}{N}\sup_{i\geq 1} ||\varphi_{k_i}(\cdot)||^2_{L^2(a,b;\mathbb{R}^n)}+\frac{1}{N}\rightarrow 0,
+	\end{eqnarray*}
+	
+	when $N\rightarrow 0$. Now, consider that $\bar{\varphi}(\cdot)\neq 0$, thus $\varphi_{k}(\cdot)-\bar{\varphi}(\cdot)=0$, and we can apply the previous steps.
+\end{proof}
+
+\begin{lemma}\label{FL}[Filippov]
+	Let $U$ be a complete separable metric space whose metric is denoted by $d(\cdot,\cdot)$. Let $g:[0,T]\times U\rightarrow \mathbb{R}^n$ be a map which is measurable in $t\in[0,T]$ and
+	
+	\begin{center}
+			$|g(t,u)-g(t,v)|\leq \omega(d(u,v))$, for every $u,v\in U$, $t\in [0,t],$
+	\end{center}
+
+	 for some continuous and increasing function $\omega:\mathbb{R}_{+}\rightarrow \mathbb{R}_{+}$ with $\omega(0)=0$, called a modulus of continuity. Moreover,
+	 
+	\begin{equation*}
+	0\in g(t,U)\,\,\,a.e. \,\,t\in [0,t].
+	\end{equation*}
+	
+	Then there exists a measurable map $u:[0,T]\rightarrow U$, such that 
+	
+	\begin{equation}\label{eq1.17}
+	g(t,u(t))=0\,\, a.e.\,\, t\in [0,T].
+	\end{equation}
+	
+\end{lemma}
+
+\begin{proof}
+Define $\bar{d}(u,v)=\frac{d(u,v)}{1+d(u,v)}<1$ for every $u,v\in U$. Then with this new metric $\bar{d}$, $U$ still complet and separable. Hence without loss of generality, we assume that the original metric $d(\cdot,\cdot)$ already satisfies $d(u,v)<1$ for every $u,v \in U$.
+
+Next, we define
+
+\begin{equation*}
+\Gamma(t):=\{u\in U | g(t,u)=0\},\, t\in [0,t].
+\end{equation*}	
+
+We have that $\Gamma(t)\neq \emptyset$, because $0\in g(t,U)\,\,\,a.e. \,\,t\in [0,t]$. Let $U_0:=\{v_k | k\geq 1\}$ be a countable dense subset of $U$. We claim that for any $u \in U$ and $0\leq c < 1$,
+
+\begin{equation}\label{eq1.18}
+\{t\in[0,T] |\, d(u,\Gamma(t))\leq c\}=\bigcap^{\infty}_{i=1}\bigcup^{\infty}_{j=1}\{t\in[0,T] |\, d(u,v_j)\leq c+\frac{1}{i},|g(t,v_j)|\leq \frac{1}{i}\},
+\end{equation}
+
+where 
+
+$$d(u,\Gamma (t)):=\inf_{v\in \Gamma(t)}d(u,v).$$
+
+To show (\ref{eq1.18}), we note that $t\in [0,T]$, with $d(u,\Gamma(t))\leq c$ if and only if there exists a sequence $u_k \in \Gamma(t)$, i.e., $g(t,u_k)=0$, such that
+
+$$d(u,u_k)\leq c+\frac{1}{k}.$$
+
+Since $\bar{U}_0=U$, there exists a sequence $v_{j_k} \in U_0$ such that 
+
+$$d(u_k,v_{j_k})<\frac{1}{k}.$$
+
+Hence, by triangle inequality
+
+$$d(u,v_{j_k})\leq d(u,u_k)+d(u_k,v_{j_k})\leq c+\frac{2}{k}.$$
+
+Next, by the uniform continuity of $u\mapsto g(t,u)$, we have
+
+$$|g(t,v_{j_k})|\leq |g(t,v_{j_k})-g(t,u_k)|\leq \omega(d(v_{j_k},u_k))\leq \omega\left(\frac{1}{k}\right).$$
+
+Hence, one has
+
+$$\left\{ \begin{array}{l}
+	\lim_{k\rightarrow \infty} d(u,v_{j_k})\leq c, \\
+    \lim_{k\rightarrow \infty} g(t,v_{j_k})=0. \\
+\end{array}
+\right.$$
+
+Thus, $d(u,\Gamma(t))\leq c$ if and only if for any $i\geq 1$, there exists a $j\geq i$, such that
+
+$$\left\{ \begin{array}{l}
+ \bar{d}(u,v_{j})\leq c+\frac{1}{i}, \\
+ |g(t,v_{j})|\leq \frac{1}{i}. \\
+\end{array}
+\right.$$
+
+This prove (\ref{eq1.18}). Since the right-hand side of (\ref{eq1.18}) is measurable, so is the let-hand side. On the other hand,
+
+$$\left\{ \begin{array}{l}
+\{t\in[0,T] |\, d(u,\Gamma(t))\leq c\}=[0,T],\,\mbox{for every}\, c\geq 1, \\
+\{t\in[0,T] |\, d(u,\Gamma(t))\leq c\}=\emptyset,\,\mbox{for every}\, c<0. \\
+\end{array}
+\right.$$
+
+Hence, the function $t\mapsto d(u,\Gamma(t))$ is measurable. Now, we define
+
+$$u_0(t):=v_1,\,\mbox{for every}\, t\in [0,T].$$
+
+Clearly, $u_0(t)$ is measurable and 
+
+$$d(u_0(t),\Gamma(t))<1\,\mbox{for every}\,t\in[0,T].$$
+
+Suppose that we have defined $u_{k-1}(\cdot)$ such that 
+
+\begin{equation}\label{eq1.19}
+\left\{ \begin{array}{l}
+d(u_{k-1}(t),\Gamma(t))\leq 2^{1-k},  \\
+d(u_{k-1}(t),u_{k-2}(t))\leq 2^{2-k},\\
+\end{array}
+\right. t\in[0,T].
+\end{equation}
+
+We define the sets
+
+$$\left\{ \begin{array}{l}
+	C^k_i:=\{t\in[0,T] |\, d(v_i,\Gamma(t))<2^{-k}\}, \\
+	D^k_i:=\{t\in[0,T] |\, d(v_i,u_{k-1}(t))< 2^{1-k}\}.\\
+\end{array}
+\right.$$
+
+Since $t\mapsto d(v_i,\Gamma(t))$ is measurable, $C^k_i$ is measurable. Likewise, $D^k_i$ is also measurable. Set
+$$A^k_i=C^k_i\cap D^k_i, \,k,i\geq 1.$$
+
+Then $A^k_i$ is measurable as well. We claim that
+
+\begin{equation}\label{eq1.20}
+[0,T]=\bigcup^{\infty}_{i=1}A^k_i\,\mbox{for every}\,k\geq 1.
+\end{equation}
+
+In fact, for any $t\in[0,T]$, by (\ref{eq1.19}), there exists a $u\in\Gamma(t)$ such that 
+
+$$d(u_{k-1}(t),u)<2^{1-k}.$$
+
+By the density of $U_0$ in $U$, there exists an $i\geq 1$ such that
+
+$$d(v_i,\Gamma(t))\leq\left\{ \begin{array}{l}
+	d(v_i,u)< 2^{-k},  \\
+	d(v_i,u_{k-1}(t))<2^{1-k},\\
+\end{array}
+\right.$$
+
+which means $t\in A^k_i$, proving (\ref{eq1.20}). Now we define $u_k(\cdot):[0,T]\rightarrow U_0\subseteq U$ as follows:
+
+$$u_k(t)=v_i,\,\mbox{for every}\, t\in A^k_{i}\backslash \bigcup^{\infty}_{j=1}A^k_j.$$
+
+By $t\in C^k_i$, we have 
+
+$$d(u_k(t),\Gamma(t))<2^{-k},$$
+
+and by $t\in D^k_i$, we have
+
+$$d(u_k(t),u_{k-1}(t))<2^{1-k}.$$
+
+This completes the construction of the sequence $\{u_k(\cdot)\}$ inductively. Clearly, (\ref{eq1.19}) holds for every $k\geq 1$. This als implies that for each $t\in[0,T]$, $\{u_k(t)\}$ is Cauchy in $U$. By completeness of $U$m we obtain 
+
+$$\lim_{k\rightarrow \infty} u_k(t)=u(t),\, t\in [0,t].$$
+
+Of course, $u(\cdot)$ is measurable, and moreover, by the closeness of $\Gamma(t)$, we have
+
+$$u(t)\in \Gamma(t),\,\mbox{for every}\, t\in [0,T].$$
+
+This means (\ref{eq1.17}) holds.
+\end{proof}
+
+\begin{prop}\label{GIP}[Gronwall's Inequality]
+	Let $\theta:[a,b]\rightarrow \mathbb{R}_{+}$ be continuous and satisfy
+	$$\theta (s)\leq \alpha(s)+\int_a^s\beta(r)\theta (r) dr,\,\, s\in [a,b],$$
+	
+	for some $\alpha(\cdot),\beta (\cdot)\in L^1(a,b;\mathbb{R}_{+})$. Then
+	
+	\begin{equation}\label{eq1.30}
+	\theta(s)\leq \alpha(s)+\int_{a}^{s}\alpha(\tau)\beta(\tau)e^{\int_{\tau}^{s}\beta(r)dr}d\tau,\,\, s\in[a,b].
+	\end{equation}
+	In particular, if $\alpha(\cdot)=\alpha$ is a constant, then
+	
+	\begin{equation}\label{eq1.31}
+	\theta(s) \leq \alpha e^{\int_{a}^{s}\beta(r)dr},\,\, s[a,b]. 
+	\end{equation}
+	\end{prop}
+\begin{proof}
+	Let $\varphi(s)=\int_{a}^{s}\beta(r)\theta(r)dr.$, by the fundamental theorem of calculus, we have
+		
+	$$\dot{\varphi}(s)=\beta(s)\theta(s)\leq \beta(s)[\alpha(s)+\varphi(s)].$$
+	
+	This leads to 
+	
+	$$[\varphi(s)e^{-\int_{a}^{s}\beta(r)dr}]'\leq\alpha(s)\beta(s)e^{-\int_{a}^{s}\beta(r)dr}.$$
+	
+	Consequently,
+	$$\varphi(s)e^{-\int_{a}^{s}\beta(r)dr}\leq \int_{a}^{s}\alpha(\tau)\beta(\tau)e^{-\int_{a}^{\tau}\beta(r)dr}d\tau.$$
+	
+		$$\varphi(s)\leq \int_{a}^{s}\alpha(\tau)\beta(\tau)e^{-\int_{a}^{\tau}\beta(r)dr}e^{\int_{a}^{s}\beta(r)dr}d\tau .$$
+	
+	rewriting 
+	
+	$$\varphi(s)\leq \int_{a}^{s}\alpha(\tau)\beta(\tau)e^{\int_{\tau}^{s}\beta(r)dr}d\tau .$$
+	
+	Hence,
+	
+	$$\theta(s)\leq \alpha(s)+\int_{a}^{s}\alpha(\tau)\beta(\tau)e^{\int_{\tau}^{s}\beta(r)dr}d\tau.$$
+	
+	(\ref{eq1.30}) holds. Now, consider $\alpha$ constant, then
+	
+	$$\theta(s)\leq \alpha+\int_{a}^{s}\alpha\beta(\tau)e^{\int_{\tau}^{s}\beta(r)dr}d\tau.$$
+	
+	By integration rules, if $u=\alpha,dv=\beta(\tau)e^{\int_{\tau}^{s}\beta(r)dr}d\tau$. In the other hand,
+	
+	$$\frac{d}{d\tau}e^{\int_{\tau}^{s}\beta(r)dr}=\frac{d}{d\tau}e^{-\int_{s}^{\tau}\beta(r)dr}=-\beta(\tau) e^{-\int_{s}^{\tau} \beta(r)dr}=-\beta(\tau)e^{\int_{\tau}^{s}\beta(r)dr}$$
+	
+	Then
+	
+	$$\theta(s)\leq \alpha-\alpha\int_{a}^{s}\frac{d}{d\tau}e^{\int_{\tau}^{s}\beta(r)dr}d\tau=\alpha-\alpha [e^{0}-e^{\int_{a}^{s}\beta(r)dr}].$$
+	
+	Therefore,
+	
+	$$\theta(s)\leq \alpha e^{\int_{a}^{s}\beta(r)dr},$$
+	
+	(\ref{eq1.31}) holds.
+\end{proof}
