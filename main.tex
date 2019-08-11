@@ -5,19 +5,43 @@
 %\usepackage{todonotes}
 \begin{document}
     %----------------------------------------------------------------------------------------
-    %	TITLE PAGE
+    %   TITLE PAGE
     %----------------------------------------------------------------------------------------
     \begingroup
     \thispagestyle{empty} % Suppress headers and footers on the title page
     \begin{tikzpicture}[remember picture,overlay]
     \node[inner sep=0pt] (background) at (current page.center) 
     {\includegraphics[width=\paperwidth]{background.pdf}};
-    \draw (current page.center) node [fill=ocre!30!white,fill opacity=0.6,text 
-    opacity=1,inner 
-    sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering
-     The Search for a Title\\[15pt] % Book title
-            {\Large A Profound Subtitle}\\[20pt] % Subtitle
-            {\huge Dr. John Smith}}}; % Author name
+    \draw (current page.center) 
+    node [%
+        fill=ocre!30!white,
+        fill opacity=0.6,
+        text opacity=1,
+        inner sep=1cm]
+        {%
+        \Huge
+        \centering
+        \bfseries
+        \sffamily
+        \parbox[c][][t]{\paperwidth}{%
+            \centering
+            Optimal Control:
+            Existence Theory and two Variational Principles
+            \\[15pt] % Book title
+            {
+                \Large
+             From the Ekeland's to Pontryagin's Variational Principle
+            }
+            \\[20pt]
+            {
+                \huge 
+                Sa\'ul D\'iaz Infante,
+                David Gonz\'lez-S\'anchez,
+                Nhoemy Palafox,
+                Gabriel Salcedo
+            }
+        }
+    }; % Author name
     \end{tikzpicture}
     \vfill
     \endgroup
@@ -31,10 +55,10 @@
     \noindent Copyright \copyright\ 2019 John Smith\\ % Copyright notice
     \noindent \textsc{Published by Publisher}\\ % Publisher
     \noindent \textsc{book-website.com}\\ % URL
-    \noindent Licensed under the Creative Commons Attribution-NonCommercial 3.0 
-    Unsupported License (the ``License''). You may not use this file except in 
-    compliance with the License. You may obtain a copy of the License at 
-    \url{http://creativecommons.org/licenses/by-nc/3.0}. Unless required by 
+    \noindent Licensed under the Creative Commons Attribution-Non Commercial 
+    3.0  Unsupported License (the ``License''). You may not use this file 
+    except in compliance with the License. You may obtain a copy of the License 
+    at \url{http://creativecommons.org/licenses/by-nc/3.0}. Unless required by 
     applicable law or agreed to in writing, software distributed under the 
     License is distributed on an \textsc{``as is'' basis, without warranties or 
     conditions of any kind}, either express or implied. See the License for the 
