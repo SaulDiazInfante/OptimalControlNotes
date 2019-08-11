@@ -1,17 +1,25 @@
-\chapter{Existence theory for optimal policies}
-In this chapter, we will give the important results for the proof of the theorem of existence of optimal control pairs. In addition to presenting some problems related to these optimal pairs \cite{Yong2015}.
 
-In what follows, we denote $\mathbb{R}_{+}=[0,\infty)$. For any initial pair $(t,x)\in \mathbb{R}_{+}\times \mathbb{R}^n$, consider the following ordinary differential equation:
+In this chapter, we will give the important results for the proof of the 
+theorem of existence of optimal control pairs. In addition to presenting some 
+problems related to these optimal pairs \cite{Yong2015}.
+
+In what follows, we denote $\mathbb{R}_{+}=[0,\infty)$. For any initial pair 
+$(t,x)\in \mathbb{R}_{+}\times \mathbb{R}^n$, consider the following ordinary 
+differential equation:
 
 \begin{equation}\label{eq1.10}
-\left\{ \begin{array}{l}
-\dot{X}(s)=f(s,u(s),X(s)\,\,s\in [t,\infty), \\
-X(t)=x,\\
-\end{array}
-\right.
+    \left\{ 
+        \begin{array}{l}
+            \dot{X}(s)=f(s,u(s),X(s)\,\,s\in [t,\infty), \\
+            X(t)=x,\\
+        \end{array}
+        \right.
 \end{equation}
 
-Where $f:\mathbb{R}_{+}\times U\times \mathbb{R}^n\rightarrow \mathbb{R}^n$ is a given map. In the above, $X(\cdot)$ is called the state trajectory, taking values in $\mathbb{R}^n$ and $u(\cdot)$ is called the control, taking values in some metric space $U$. We call (\ref{eq1.10}) a control system.
+Where $f:\mathbb{R}_{+}\times U\times \mathbb{R}^n\rightarrow \mathbb{R}^n$ is 
+a given map. In the above, $X(\cdot)$ is called the state trajectory, taking 
+values in $\mathbb{R}^n$ and $u(\cdot)$ is called the control, taking values in 
+some metric space $U$. We call (\ref{eq1.10}) a control system.
 
 For any $0\leq t<T<\infty$, we define the following:
 
@@ -20,29 +28,68 @@ $$\mathcal{U}[t,T]=\{u:[t,T]\rightarrow U | u(\cdot)\,\mbox{is measurable} \},$$
 and 
 
 
-$$\mathcal{U}[t,\infty)=\{u:[t,\infty)\rightarrow U | u(\cdot)\,\mbox{is measurable} \}.$$
+$$
+    \mathcal{U}[t,\infty)=
+        \{u:[t,\infty)\rightarrow U | u(\cdot)\,
+        \mbox{is  measurable} \}.
+$$
 
-Any $u(\cdot)\in \mathcal{U}[t,T]$, respectively $u(\cdot)\in \mathcal{U}[t,\infty)$, is called a feasible control on $[t,T]$, respectively $[t,\infty)$. 
+Any $u(\cdot)\in \mathcal{U}[t,T]$, respectively 
+$
+    u(\cdot)\in 
+    \mathcal{U}[t,\infty)
+$, is called a feasible control on $[t,T]$, respectively $[t,\infty)$. 
 
-Under proper conditions, for any initial pair $(t,x)$, and feasible control $u(\cdot)$, (\ref{eq1.10}) admits a unique solution $X(\cdot)=X(\cdot;t,x,u(\cdot))$ deined on $[t,\infty)$. Clearly different choices of $U(\cdot)$ will result in different state trajectories $X(\cdot)$. We reer to $(u(\cdot),X(\cdot))$ as a state-control pair of the control system (\ref{eq1.10}).
+Under proper conditions, for any initial pair $(t,x)$, and feasible control 
+$u(\cdot)$, (\ref{eq1.10}) admits a unique solution 
+$X(\cdot)=X(\cdot;t,x,u(\cdot))$ deined on $[t,\infty)$. Clearly different 
+choices of $U(\cdot)$ will result in different state trajectories $X(\cdot)$. 
+We reer to $(u(\cdot),X(\cdot))$ as a state-control pair of the control system 
+(\ref{eq1.10}).
 
-Next, we recall that $2^{\mathbb{R}^n}$ is the set of all subsets of $\mathbb{R}^n$. Any map $M:\mathbb{R}_{+}\rightarrow 2^{\mathbb{R}^n}$ is called a moving target in $\mathbb{R}^n$ i for any $t\in \mathbb{R}_{+}$, $M(t)$ is a measurable set in $\mathbb{R}^n$. WE allow $M(t)$ to be empty for some or all $t$, which will give us some fleaxibility below. In most situations, for any $t\in\mathbb{R}_{+}$, $M(t)$ is assumed to be closed or open.
+Next, we recall that $2^{\mathbb{R}^n}$ is the set of all subsets of 
+$\mathbb{R}^n$. Any map $M:\mathbb{R}_{+}\rightarrow 2^{\mathbb{R}^n}$ is 
+called a moving target in $\mathbb{R}^n$ i for any $t\in \mathbb{R}_{+}$, 
+$M(t)$ is a measurable set in $\mathbb{R}^n$. WE allow $M(t)$ to be empty for 
+some or all $t$, which will give us some flexibility below. In most situations, 
+for any $t\in\mathbb{R}_{+}$, $M(t)$ is assumed to be closed or open.
 
-Problem (C). Let $M(\cdot)$ be a moving target set in $\mathbb{R}^n$. For given $(t,x)\in \mathbb{R}_{+}\times \mathbb{R}^n$, ind a control $u(\cdot)\in \mathcal{U}[t,\infty)$ such that for some $\tau \geq t$,
+Problem (C). Let $M(\cdot)$ be a moving target set in $\mathbb{R}^n$. For given 
+$(t,x)\in \mathbb{R}_{+}\times \mathbb{R}^n$, ind a control $u(\cdot)\in 
+\mathcal{U}[t,\infty)$ such that for some $\tau \geq t$,
 
-$$X(\tau;t,x,u(\cdot))\in M(\tau).$$
+$$
+    X(\tau;t,x,u(\cdot))\in M(\tau).
+$$
 
-The above is called a controllability problem for the system (\ref{eq1.10}) with the moving target set $M(\cdot)$. For a moving set $M(\cdot)$ in $\mathbb{R}^n$, and $T\in (0\infty)$, we define
-
-$$\mathcal{U}^{M(\cdot)}_x[t,T]=\{u(\cdot)\in \mathcal{U}[t,\infty) | X(\tau;t,x,u(\cdot))\in M(\tau),\,\mbox{for some}\, \tau\in[t,T]\},\, (t,x)\in [0,T]\times \mathbb{R}^n,$$
-
+The above is called a controllability problem for the system (\ref{eq1.10}) 
+with the moving target set $M(\cdot)$. For a moving set $M(\cdot)$ in 
+$\mathbb{R}^n$, and $T\in (0\infty)$, we define
+%
+$$
+    \mathcal{U}^{M(\cdot)}_x[t,T]=
+        \{u(\cdot)\in \mathcal{U}[t,\infty) | X(\tau;t,x,u(\cdot))
+        \in  M(\tau),\,\mbox{for some}\, \tau\in[t,T]\},\, (t,x)\in [0,T]\times 
+        \mathbb{R}^n,
+$$
 and
-
-$$\mathcal{U}^{M(\cdot)}_x[t,\infty)=\bigcup_{T\geq t}\mathcal{U}^{M(\cdot)}_x[t,T],\,\,\mbox{for every}\, (t,x)\in\mathbb{R}_{+}\times\mathbb{R}^n.$$
-
+%
+$$
+    \mathcal{U}^{M(\cdot)}_x[t,\infty)=\bigcup_{T \geq t}
+    \mathcal{U}^{M(\cdot)}_x[t,T],\,\,\mbox{for every}\, 
+    (t,x)
+    \in
+    \mathbb{R}_{+} \times \mathbb{R}^n.
+$$
+%
 Let $M\subseteq \mathbb{R}^n$ be non-empty and closed, $T\in(0,\infty)$, and let
-
-$$M(t)=\emptyset I_{\mathbb{R}_{+}\backslash{T}}(t)+MI_{\{T\}}(t),\,\, t\in \mathbb{R}_{+}.$$
+%
+$$
+    M(t)=
+        \emptyset I_{\mathbb{R}_{+}
+        \backslash{T}}(t)
+        + MI_{\{T\}}(t),\,\, t\in \mathbb{R}_{+}.
+$$
 
 Then, for any $(t,x)\in [0,T)\times \mathbb{R}^n$,
 

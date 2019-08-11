@@ -1,0 +1,214 @@
+\section{Ekeland's Principle}
+    
+    Let $(M,d)$ be a metric space, and let $f : M \to \mathbf{R}$ be any 
+    function.
+    Define a relation $\preceq$ on $M$ by the condition 
+    $$
+        y \preceq x \iff f(y) + d(x,y) \leq f(x).
+    $$
+    This a partial orderering on M, that is, for all $x$, $y$, $z$ $\in M$ we 
+    have
+    \begin{itemize}
+        \item[i)] $x \preceq x$, (reflexivity)
+        \item[ii)] $x \preceq y$ and $y \preceq x$ implies $x = y$, 
+        (antisymmetry)
+        \item[iii)] $x \preceq$ and $y \preceq z$ implies $x \preceq z$. %
+            (transitivity)
+    \end{itemize}
+    Now, we prove these properties
+    \begin{itemize}
+        \item[i)]
+            Note that 
+            $$
+                f(x) + d(x,x) = f(x) \leq f(x)
+            $$
+            then $x \preceq x$
+        \item[ii)]
+            Suppose that $x \preceq y$ and $y \preceq x$ that is
+            \begin{align}
+                f(x) &+ d(y, x) \leq f(y), \label{po_ii_eq1}\\
+                f(y) &+ d(x, y) \leq f(x). \label{po_ii_eq2}
+            \end{align}
+            If we add $\eqref{po_ii_eq1}$ and $\eqref{po_ii_eq2}$, then we get
+            $$
+                f(x) + f(y) + 2 d(x,y) \leq f(x) + f(y).
+            $$
+            Thus,
+            $$
+                d(x, y) = 0,
+            $$
+            which implies $x = y$.
+        \item[iii)]
+            Suppose that $ x \preceq y$ and $y \preceq z$, that is
+            \begin{align}
+                f(x) &+ d(y, x) \leq f(y), \label{po_iii_eq1}\\
+                f(y) &+ d(y, z) \leq f(z). \label{po_iii_eq2}  
+            \end{align}
+            Adding $\eqref{po_iii_eq1}$ and $\eqref{po_iii_eq2}$, we get
+            $$
+                f(x) + f(y) + d(y,x) + d(y, z) \leq f(y) + f(z).
+            $$
+            Then
+            $$
+                f(x) + d(x,y) + d(y, z) \leq f(z).
+            $$
+            Using the triangle inequality 
+            $$
+                f(x) + d(x, z) \leq f(z).
+            $$
+            This implies that $x \preceq z$.
+    \end{itemize}
+%---------%---------%---------%---------%---------%---------%---------%---------
+%---------%---------%---------%---------%---------%---------%---------%---------
+    We call a minimal point in the partial order $\preceq$ a \textit{d-point}.
+    Thus, a point $x \in M$ is a $d$-point if $y \preceq x$ implies that $y = 
+    x$,
+    or equivalently,
+    $$
+        f(x) < f(y) + d(x,y),
+    $$
+    for all $y \in M$, $y \neq x$. Now, define the set 
+    $$
+        S(x) := \{ y \in M : y \preceq x\} =%
+                \{ y \in M : f(y) + d(x,y) \leq f(x) \}.
+    $$
+    Note that $x \in S(x)$, since $x \preceq x$, so $S(x) \neq \varnothing$. 
+    Since 
+    $\preceq$ is a partial order, we claim that $y \preceq x$ if and only if
+    $S(y) \subseteq S(x)$. Suppose that $y \preceq x $ and let $z \in S(y)$, 
+    then
+    $z \preceq y$ and $y \preceq x$. This implies that $z \preceq x$, so $z \in 
+    S(x)$.
+    Now, suppose that $S(y) \subseteq S(x)$, then $y \in S(x)$. Which implies
+    $y \preceq x$.
+    
+    Note that if $f$ is a lower semicontinuous function then $S(x)$ is a closed 
+    subset of M. Also a $d$-point $x$ is characterized by the condition that
+    $S(x)$ is  a single, that is, $S(x) = \{ x \}$. 
+    We hav eto prove the following Theorem, to prove Ekekeland's
+    
+    \begin{theorem}
+        Let $(M, d)$ be a metric space. The following condition are equivalent:
+        \begin{itemize}
+            \item[a)]
+                $(M.d)$ is a complete metric space,
+            \item[b)]
+                For any proper lower semicontinuous function  $f: M \to 
+                \mathbb{R}\cup%
+                \{+ \infty\} $  bounded from below, and any point $x_0 \in M$, 
+                there 
+                exists a $d$-point $x0$ satisfying $x \preceq x_0$
+        \end{itemize}
+    \end{theorem}
+    \begin{proof} \hspace{1cm} \\
+        $b) \implies a)$.
+        
+        Fix $x_0 \in M$. Let $\{x_n\}_{n=1}^{\infty}$ be a Cauchy sequence in M.
+        Consider the proper lower semicontinuous function
+        $$
+            f(x) := 2 \lim_{n \to \infty} d(x, x_n).
+        $$
+        Let us prove the numerical sequence $\{ d(x,x_n)\}$ is a Cauchy sequence
+        in $\mathbb{R}$. Since $\{ x_n\}$ is a Cauchy sequence, given $\epsilon$
+        there is $N(\epsilon) \in \mathbb{N}$ such that for all $m, n \geq N$
+        $$
+            d(x_m, x_n) < \epsilon.
+        $$
+        It follows from 
+        \begin{align*}
+            d(x, x_n) &\leq d(x,x_m) + d(x_m,x_n), \\
+            d(x, x_m) &\leq d(x,x_n) + d(x_n,x_m),
+        \end{align*}
+        that
+        $$
+            \abs{d(x, x_m) - d(x, x_n)} \leq d(x_m, x_n) \leq \epsilon,
+        $$
+        for all $m, n \geq N$. Then, $\{ d(x, x_n)\}$ is a Cauchy sequence and
+        this implies that $f$ is well-defined. \\
+        We claim that $f$ is continuous at $x^{*} \in M$. Let  $\epsilon>0$,
+        $x^{*} \in M$ and take $\delta = \epsilon /2$ such that $d(x, x^{*})< 
+        \delta$,
+        with $x \in M$. Then, for any $n \in \mathbb{N}$
+        \begin{equation} \label{Thm3.1_eq1}
+            d(x, x_n) \leq d(x, x^{*}) + d(x^{*}, x_n),
+        \end{equation}
+        and
+        \begin{equation} \label{Thm3.1_eq2}
+            d(x^{*}, x_n) \leq d(x^{*}, x) + d(x, x_n).
+        \end{equation}
+        Combining $\eqref{Thm3.1_eq1}$ and $\eqref{Thm3.1_eq2}$, we obtain
+        $$
+            \abs{d(x,x_n) - d(x^{*}, x_n)} \leq d(x, x^{*}) \leq 
+            \frac{\epsilon}{2}.
+        $$
+        Letting $n \to \infty$, we have 
+        $$
+            \abs{2\lim_{n \to \infty} d(x, x_n) - 2\lim_{n \to \infty} d(x^{*}, 
+            x_n)} %
+            < \epsilon.
+        $$
+        Hence, $f$ is continuous at $x^{*}$. Now, note $f(x_n) \to 0$, since
+        \begin{align*}
+            \lim_{n \to \infty} f(x_n) 
+            &= 
+                \lim_{n \to \infty} \left[2 \lim_{m \to \infty} d(x_n, x_m) 
+                \right]
+            &= 2 \lim_{n \to \infty} \lim_{m \to \infty} d(x_n, x_m)
+            &= 2 \cdot 0 = 0.
+        \end{align*}
+        Let $x \in M$ be a $d$-point of $f$, by definition 
+        $$
+            f(x) < f(y) + d(x, y),
+        $$
+        for all $y \in M$. Then 
+        $$
+            f(x) < f(x_n) + d(x, x_n).
+        $$
+        Letting $n \to \infty $ we have
+        $$
+            0 \leq \lim_{n \to \infty} d(x, x_n) = f(x) < f(x_n) + d(x, x_n) = %
+                \frac{f(x)}{2}.
+        $$
+        This implies that $f(x) = 0$. So $d(x, x_n) \to 0$ as $n \to \infty$. 
+        Hence, $M$ is a complete metric space. \\
+        $a) \implies b)$.
+    \end{proof}
+%---------%---------%---------%---------%---------%---------%---------%---------
+%---------%---------%---------%---------%---------%---------%---------%---------
+\begin{theorem}[{\cite[Thm.3.2*]{guler2010foundations}}]\label{Thm_3.2}
+    Let $(M, d)$ be a complete metric space, and let $f : M \to \extRealp$ be 
+    a proper lower semicontinuous function that is bounded from below. Then, 
+    for every $\epsilon > 0$, $\lambda > 0$, and $x \in M$ such that
+    $$ 
+        f(x) \leq \inf_{M} f + \epsilon,
+    $$
+    there exists an element $x_{\epsilon}\in M$ satisfying the following three 
+    properties:
+    \begin{align}
+        & f(x_{\epsilon}) \leq f(x), \notag \\
+        & d(x_{\epsilon}, x) \leq \lambda,  \\
+        & f(x_{\epsilon}) < f(z) + \frac{\epsilon}{\lambda}d(z,x_{\epsilon}), \ 
+        %
+         \text{ for all } z\in M, z \neq x_{\epsilon} .\notag 
+    \end{align}
+\end{theorem}
+
+\begin{corollary}
+    Let the function $f$ and the point $x$ satisfying the conditions in the
+    Theorem \ref{Thm_3.2}. Then there exists a point $x_{\epsilon}$ satisfying
+    the following conditions:
+     \begin{align}
+        & f(x_{\epsilon}) \leq f(x), \notag \\
+        & d(x_{\epsilon}, x) \leq \sqrt{\epsilon},  \\
+        &  f(z) >  f(x_{\epsilon}) -\sqrt{\epsilon}d(z,x_{\epsilon}), \ %
+         \text{ for all } z\in M, z \neq x_{\epsilon}. \notag 
+    \end{align}
+\end{corollary}
+An application of the Ekeland's Variational Principle is the proof of the Banach
+Fixed Point Theorem.
+\begin{theorem}[Banach Fixed Point Theorem]
+    A contractive mapping $\varphi : M \to M$ on a complete metric space $(M,d)$
+    has a unique fixed point.
+\end{theorem}
+%---------%---------%---------%---------%---------%---------%---------%---------
+%---------%---------%---------%---------%---------%---------%---------%---------

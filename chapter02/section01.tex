@@ -1,0 +1,521 @@
+\section{Lower and Upper Semicontinuous Functions} 
+
+%---------%---------%---------%---------%---------%---------%---------%---------
+%---------%---------%---------%---------%---------%---------%---------%---------
+
+    The purpose of this section is to establish the Ekeland's variational 
+    principle {\cite{guler2010foundations}} for this we need the concept of 
+    semicontinuous functions which will be defined over metric spaces $(E,d)$. 
+    Also, we  define the set of extended real numbers as
+    $$
+        \extRealp := \{- \infty \} \cup \mathbb{R} \cup \{ + \infty \}.
+    $$
+    The set of extended real numbers is ordered and we can define the following 
+    operations additionally to the usual operations over $\mathbb{R}$
+    \begin{align*}
+        x \in \mathbb{R} \cup \{+\infty\} &\implies x + (+ \infty) = +\infty, \\
+        x \in \mathbb{R} \cup \{-\infty\} &\implies x + (- \infty) = -\infty, \\
+        x > 0 &\implies x(+ \infty) = + \infty, \\
+        x < 0 &\implies x(+ \infty) = - \infty, \\
+        (- \infty)(+ \infty) &= -\infty, \\
+        (- \infty)(- \infty) &= (+ \infty)(+ \infty) = + \infty, \\
+        0(+ \infty) &= 0(-\infty) = 0.
+    \end{align*}
+%---------%---------%---------%---------%---------%---------%---------%---------
+    \begin{definition}
+        Let $\{ x_n \}$ be a sequence of extended real numbers, that is 
+        $x_n \in \extRealp$. The limit inferior of $\{ x_n \}$ is
+        $$
+            \varliminf_{n \to \infty} x_n := \lim_{n \to \infty} \inf_{k \geq 
+            n}{x_{k}} %
+            = \sup_{n} \inf_{k \geq n}{x_k},
+        $$
+        where the second equality follows since $\{ \inf_{k \geq n}{x_k} \}$ 
+        is an increasing sequence in n. Similarly, the limit superior of 
+        $\{ x_n \}$ is
+        $$
+            \varlimsup_{n \to \infty} x_n := \lim_{n \to \infty} \sup_{k \geq 
+            n}{x_{k}} %
+            = \inf_{n} \sup_{k \geq n}{x_k}.
+        $$
+    \end{definition}
+%---------%---------%---------%---------%---------%---------%---------%---------
+    \begin{definition}
+        Let $f : E \to \extRealp $ be an extended real-valued function. The 
+        limit
+        inferior of f as $x \in E$ converges to $x_0 \in E$  is defined by 
+        $$
+            \varliminf_{x \to x_0} f(x) := \lim_{\delta \to 0} %
+            \inf_{d(x, x_0) < \delta} f(x) = \sup_{\delta} \to 0 \inf_{d(x, 
+            x_0) %
+            < \delta} f(x),
+        $$
+        and its limit superior by 
+        $$
+            \varlimsup_{x \to x_0} f(x) := \lim_{\delta \to 0} %
+            \sup_{d(x, x_0) < \delta} f(x) = \inf_{\delta} \to 0 \sup_{d(x, 
+            x_0) %
+            < \delta} f(x).
+        $$
+    \end{definition}
+%---------%---------%---------%---------%---------%---------%---------%---------
+    \begin{lemma}\label{c1s5L1}
+        Let $f : E \to \extRealp $. We have
+        $$
+            \varliminf_{x \to x_0} f(x) = \inf_{\{x_n\}}{\varliminf_{n \to 
+            \infty}f(x)},
+        $$
+        where the infimum on the right-hand side is taken over all sequences 
+        $x_n \to x_0$. Similarly, 
+        $$
+            \varlimsup_{x \to x_0} f(x) = \sup_{\{x_n\}}{\varlimsup_{n \to 
+            \infty}f(x)}.
+        $$
+    \end{lemma}
+%---------%---------%---------%---------%---------%---------%---------%---------
+    \begin{proof}
+        Define 
+        \begin{align*}
+            M &:= \varliminf_{x \to x_0} f(x),  \\
+            L &:= \inf_{x_n}{\varliminf_{n \to \infty} f(x_n)}, \\
+            N_{\delta} &:= \{ x \in E : d(x, x_0) < \delta \}.
+        \end{align*}
+        We have to consider the cases $M = - \infty$, $M = \infty$ and 
+        $ -\infty < M < \infty $. \\
+        \underline{Case $M = -\infty$:}
+        Note that it is enough to prove the 
+        existence of a sequence $x_n \to x_0$ such that $f(x_n) \to - \infty$. 
+        Because, we can write
+        $$
+            \varliminf_{n \to \infty}{f(x_n)} = \lim_{n \to \infty} %
+            \inf \{ f(x_n), f(x_{n+1}), \ldots \} = - \infty,
+        $$
+        and, any other sequence $y_n$ that converges to $x_0$ satisfies
+        $$
+            \varliminf_{n \to \infty}f(y_n) \geq - \infty.
+        $$
+        By  the above 
+        $$
+            \inf_{x_n} \varliminf_{n \to \infty} f(x_n) = -\infty.
+        $$
+        Since, $M = -\infty$ we have that
+        $$
+            M = \varliminf_{x \to x_0} f(x) = \lim_{\delta \to 0} %
+            \inf_{x \in N_{\delta}} f(x) = - \infty .
+        $$
+        Let $\delta = \frac{1}{n}$, for all $n \in \mathbb{N}$, then
+        $$
+            \inf_{x \in N_{1/n}} f(x) = -\infty, \forall n \in \mathbb{N}.
+        $$
+        Thus, there is $y_n \in N_{1/n}$ such that $f(y_n) < -n$. We take the 
+        sequence defined by 
+        $$
+            x_n := y_n, \quad y_n \in  N_{1/n} \text{ for each } n \in 
+            \mathbb{N}.
+        $$
+        By the above, there is a sequence $x_n \to x_0$ such that 
+        $f(x_n) \to - \infty$. Hence, $M = L$. \\
+        \underline{Case $M = \infty$:} Since,
+        $$
+            \lim_{\delta} \inf_{x \in N_{\delta}} f(x) = \infty, 
+        $$
+        for a given $\epsilon > 0 $ there exists $\delta > 0 $ such that 
+        $$
+            \inf_{x \in N_{\delta}} f(x) > \epsilon.
+        $$
+        By the convergence of $x_n$, there is $N \in \mathbb{N}$ such that 
+        $x_n \in N_{\delta}$ for all $n \geq N$. Then, 
+        $$
+            f(x_n) \geq \inf_{x_n \in N_{\delta}} f(x_n) > %
+            \epsilon \quad \forall n \geq N
+        $$ 
+        That is, $f(x_n) \to \infty$ for any sequence $x_n \to x_0$. By the 
+        above
+        we conclude $L = M$.
+        \underline{Case $ -\infty < M < \infty$ :} \\
+        First, we prove that $M \leq L$. By definition, given $\epsilon>0$ there
+        is $\delta >0$ such that $\inf_{x \in N_{\delta}} f(x)$, this implies 
+        that
+        $f(x) > M - \epsilon$ for all $x \in N_{\delta}$. Let $\{x_n\}$ be a 
+        sequence
+        that converges to $x_0$. Thus, there is $N \in \mathbb{N}$ such that 
+        $x_n \in N_{\delta}$ for all $n \in \mathbb{N}$ and
+        $$
+            f(x_n) > M - \epsilon \quad \forall x_n \in N_{\delta}, n \geq N.
+        $$
+        Then
+        $$
+            \varliminf_{n \to \infty} f(x_n) = \lim_{n \to \infty} \inf_{x_n 
+            \in N_{delta}} %
+            \geq M - \epsilon.
+        $$
+        The above holds for any sequence $x_n \to x_0$, then
+        $$
+            \inf_{\{x_n\}} \varliminf_{n \to \infty} f(x_n) \geq M - \epsilon,
+        $$
+        for any $\epsilon > 0$. Hence, $M \leq L$.
+        For the reverse inequality, we have that 
+        $$
+            \inf_{x \in N_{\delta}} f(x) \to M,
+        $$
+        as $\delta \to 0$. Let $\delta = \dfrac{1}{n}$. By definition of infimum
+        there is $k_{\delta} \in \mathbb{N}$ such that $x_{k_{\delta}} \in 
+        N_{\delta}$ and
+        \begin{equation*}
+            f(x_{k_\delta}) \leq \inf_{ x_{k_\delta} \in N_{\delta}} %
+                f(x_{k_\delta}) + \dfrac{1}{n}.
+        \end{equation*}
+        Thus, we choose $x_n \in N_{\frac{1}{n}}$ satisfying the above for each
+        $n \in  \mathbb{N}$. Then
+        \begin{align*}
+            L   &=      \inf_{x_n} f()x_n \\
+                &\leq   \varliminf_{n \to \infty} f(x_0) \\
+                &\leq   \varliminf_{n \to \infty} %
+                            \inf_{x_n \in N_{\frac{1}{n}}} f(x_n) + 
+                            \dfrac{1}{n}\\
+                &= M + 0.
+        \end{align*}
+        Hence $L \leq M$. Finally, notice that
+        $$
+            \varlimsup_{n \to \infty} y_n = - \varliminf_{n \to \infty}(- y_n),
+        $$
+        and
+        $$
+            \sup_{x \in A} f(x) = - \inf_{x \in A}(- f(x)),
+        $$
+        imply the second assertion.
+    \end{proof}
+%---------%---------%---------%---------%---------%---------%---------%---------
+    \begin{definition}
+        Let $f: E \to \extRealp$. The function $f$ is called lower 
+        semicontinuous  
+        (lsc) at a point $x_0 \in E$ if 
+        \begin{equation*}
+            f(x_0) \leq \varliminf_{x \to x_0} f(x).
+        \end{equation*}
+        Equivalently, by Lemma $\eqref{c1s5L1}$, f is lower semicontinuous at
+        $x_0$ if
+        \begin{equation*}
+            f(x_0) \leq \varliminf_{n \to \infty} f(x_n),
+        \end{equation*}
+        for every sequence $x_n \to x_0$.
+    \end{definition}
+    
+    \begin{definition}
+        The function $f$ is called upper semicontinuous (usc) at a point $x_0$ 
+        if
+        \begin{equation*}
+            f(x_0) \leq \varlimsup_{x \to x_0} f(x).
+        \end{equation*}
+        Equivalently, f is upper semicontinuous at $x_0$ if
+        \begin{equation*}
+            f(x_0) \leq \varlimsup_{n \to \infty} f(x_n),
+        \end{equation*}
+        for every sequence $x_n \to x_0$.
+    \end{definition}
+    
+    We say that $f$ is lower semicontinuous or closed on $E$ if $f$ is lsc
+    at every point $x \in E$. Similarly, $f$ is upper semicontinuous on $E$ 
+    if $f$ is usc at every point in $E$. Also, note that 
+    \begin{align*}
+        \varliminf_{x \to x_0} f(x) &\leq f(x_0), \\
+        \varlimsup_{x \to x_0} f(x) &\geq f(x_0),
+    \end{align*}
+    since $x_0$ lies in every neighborhood $N_{\delta}$. This implies, $f$ is 
+    lsc
+    at $x_0$ if and only if
+    $$
+        f(x_0) = \varliminf_{x \to x_0} f(x),
+    $$
+    and, $f$ is usc at $x_0$ if and only if
+    $$
+        f(x_0) = \varlimsup_{x \to x_0} f(x).
+    $$
+    Also, note that any function is lower semicontinuous at a point $x$ with
+    $f(x) = - \infty$ and similarly any function is upper semicontinuous at a 
+    point $x_0$ with $f(x) = \infty$. 
+%---------%---------%---------%---------%---------%---------%---------%---------
+    Some properties of the semicontuinity of a function are related to the
+    epigraph and hypograph of the function.
+    
+    \begin{definition}
+        Let $f : E \to \extRealp$ be a function. We define the epigraph of $f$
+        as the set
+        \begin{equation*}
+            \mathtt{epi}(f) := \{ (x, t) \in E \times \mathbb{R} : f(x) \leq t 
+            \}.
+        \end{equation*}
+        Similarly, define the hypograph of $f$ as
+        \begin{equation*}
+            \mathtt{hypo}(f) := \{ (x,t) \in E \times \mathbb{R} : f(x) \geq t 
+            \}.
+        \end{equation*}
+    \end{definition}
+    
+    \begin{theorem}
+        Let $f: E \to \extRealp$. The following statements are equivalent:
+        \begin{itemize}
+            \item[a)]
+                The function $f$ is lower semicontinuous (upper semicontinuous) 
+                on E,
+            \item[b)]
+                The set $\text{epi}(f) \ (\text{hypo}(f))$ is a closed subset 
+                of 
+                $ E \times \mathbb{R}$,
+            \item[c)]
+                The sublevel set 
+                \begin{align*}
+                    & l_{\alpha}(f) := \{ x \in E : f(x) \leq \alpha \}, \\
+                    & (l^{\alpha}(f) := \{ x \in E : f(x) \geq \alpha \})
+                \end{align*}
+                is closed for all $\alpha \in \mathbb{R}$.
+        \end{itemize}
+    \end{theorem}
+
+%---------%---------%---------%---------%---------%---------%---------%---------
+%---------%---------%---------%---------%---------%---------%---------%---------
+    \begin{proof}
+    We have to proof the following implications 
+    
+    \textbf{$a) \Rightarrow b)$} \\
+        Suppose that $f$ is a lower semicontinuous function on $E$. Let 
+        $(x_n, t_n)$ be a sequence on $\mathtt{epi}(f)$ converging to a point 
+        $(x,t)$. Since $f$ is l.s.c. at $x$,
+        \begin{equation}\label{thm2.39.a1}
+            f(x) \leq \varliminf f(x_n).
+        \end{equation}
+        On the other hand , since $(x_n, t_n) \in \mathtt{epi}(f)$ 
+        \begin{equation}\label{thm2.39.a2}
+            f(x_n) \leq t_n.
+        \end{equation}
+        for all $n \in \mathbb{N}$. Combining $\eqref{thm2.39.a1}$ and
+        $\eqref{thm2.39.a2}$ we get 
+        $$
+            f(x) \leq \varliminf f(x_n) \leq \lim f(x_n) \leq \lim t_n = t.
+        $$
+        Thus, $(x,t) \in \mathtt{epi}(f)$. Hence $\mathtt{epi}(f)$ is closed.
+        
+    \textbf{$b) \Rightarrow c)$}
+        Suppose that $\mathtt{epi}(f)$ is closed and let $(x_n)$ be a sequence 
+        in
+        $l_{\alpha}(f)$ converging to a point $x \in E$. Note that 
+        $(x_n, \alpha) \in \mathtt{epi}(f)$ and its limit $(x, \alpha) \in 
+        \mathtt{epi}(f)$. Hence $x \in l_{\alpha}(f)$.
+        
+    \textbf{$c) \Rightarrow a)$}
+        First, we consider $-\infty < f(x) < \infty$. For this case we proceed 
+        by
+        contradiction, assuming that the sublevel set $l_{\alpha}(f)$  
+        is closed for all $\alpha \in \mathbb{R}$ and $f$ is not lower 
+        semicontinuous.
+        Then, there is $\epsilon > 0$ such that
+        $$
+            \varliminf_{x \to x_0} f(x) = \sup_{\delta >0} \inf_{N_{\delta}} 
+            f(x)
+            = f(x) - 2\epsilon.
+        $$
+        Thus, for any $\delta > 0$, we have 
+        $$
+            \inf_{N_\delta} f(x) \leq f(x) - 2\epsilon < f(x_0) - \epsilon,
+        $$
+        Let $\alpha = f(x_0) - \epsilon$. Define the sequence $\{x_n\}$ defined
+        by 
+        $$
+            x_n \in N_{\delta}(x_0), x_n \to x_0,
+        $$
+        such that $f(x_n) \leq f(x_0) - \epsilon = \alpha $. That is, 
+        $x_n \in l_{\alpha}(f)$. Since $l_{\alpha}(f)$ is closed, 
+        $x_0 \in l_{\alpha}(f)$ and 
+        $$
+            f(x_0) < f(x_0) - \epsilon,
+        $$
+        which is a contradiction. Now, if $f(x) = -\infty$ for a point $x \in 
+        E$, then
+        $f$ is lsc. Now, consider the last case, $f(x) = \infty$ for some $x 
+        \in E$. 
+        Proceeding by contradiction, suppose that $f$ is not lsc at $x_0 \in E$ 
+        and
+        $f(x_0) = \infty$, so 
+        there is $\alpha \in \mathbb{R}$ such that
+        $$
+            \sup_{\delta > 0} \inf_{x \in N_{\delta}} f(x) = \alpha.
+        $$
+        
+        For any $\delta >0$, $\inf_{x \in N_{\delta}} \leq \alpha$. Let 
+        $\beta \in \mathbb{R}$ such that $\alpha < \beta$. Thus, there exist a 
+        sequence
+        $\{x_n\} \subset N_{\delta}$ that converges to $x_0$ and $f(x_n) \leq 
+        \alpha < \beta$. Since $l_{\alpha}(f)$ is closed, $x_0 \in 
+        l_{\alpha}(f)$ and
+        $$
+            \infty = f(x_0) \leq \beta, 
+        $$
+        which is a contradiction. 
+    \end{proof}
+    
+    \begin{corollary}
+        If the functions $f, \ g \ : E \to \mathbb{R} \cup \{+ \infty\}$ are 
+        lower semicontinuous, then so is $f + g$.
+    \end{corollary}
+    \begin{proof}
+        We have to prove that
+        $$
+            \{x \in E : f(x) + g(x) \leq t \},
+        $$
+        is closed. We claim that
+        \begin{equation}\label{Cor2.40}
+            \{x \in E : f(x) + g(x) > t \} = \bigcup_{\alpha \in \mathbb{R}} %
+                \{x \in E : f(x) > t - \alpha \} \cap \{x \in E : g(x) >  
+                \alpha\},
+        \end{equation}
+        We prove the following contentions:
+        \begin{itemize}
+            \item["$\subseteq$".]
+                Let $x \in \{x \in E : f(x) + g(x) > t \} $ then, there is
+                $\epsilon > 0$ and some $\alpha \in \mathbb{R}$, such that
+                $$
+                    f(x) + g(x) = t + 2\epsilon > t,
+                $$
+                and 
+                $$
+                    g(x) = \alpha + \epsilon > \alpha.
+                $$
+                Thus 
+                $$
+                    f(x) = t + 2\epsilon - \alpha - \epsilon = t - \alpha %
+                    + \epsilon > t - \alpha.
+                $$
+            \item["$\supseteq$".] Let
+            $$
+                x \in \bigcup_{\alpha \in \mathbb{R}} %
+                \{x \in E : f(x) > t - \alpha \} \cap \{x \in E : g(x) >  
+                \alpha\}.
+            $$
+            Then 
+            $$
+                f(x) + g(x) > t -\alpha + \alpha = t.
+            $$
+        \end{itemize}
+        So, the equality is proved. In the right-hand of the equality 
+        \eqref{Cor2.40} we have the
+        arbitrary union of open sets, this implies that
+        $$
+            \{x \in E : f(x) + g(x) > t \},
+        $$
+        is open. Thus, the complement
+         $$
+            \{x \in E : f(x) + g(x) \leq t \},
+        $$
+        is a closed set. By Theorem \eqref{thm2.41}, $f + g $ is lsc.
+    \end{proof}
+    
+    \begin{theorem} \label{thm2.41}
+        Let $f : E \to \mathbb{R} \cup \{+ \infty\}$ are lower semicontinuous, 
+        defined on a metric space $E$. If $f$ has a nonempty compact sublevel
+        set $l_{\alpha}(f)$, then $f$ achieves its global minimum on $E$. 
+    \end{theorem}
+    \begin{proof}
+        Let $\{x_n\}_{n = 1}^{\infty}$ be a minimizing sequence for $f$, that is
+        $$
+            f(x_n) \searrow \inf\{f(x) : x \in E \}.
+        $$
+        Define 
+        $$
+            \inf_{E} f := \{ f(x) : x \in E \} .
+        $$
+        Since $f(x_n) \searrow \inf_{E} f $ there is $N \in \mathbb{N}$ such 
+        that
+        $x_n \ in l_{\alpha}(f)$ for all $n \geq N$, that is
+        $$
+            f(x_n) \leq \alpha ,
+        $$
+        for all $n \geq N$. By hypothesis $l_{\alpha}(f)$ is a compact set, 
+        this implies
+        that $\{x_n\}_{n=N}^{\infty}$ has a convergent subsequence
+        $$
+            x_{n_k} \to x^{*} \in l_{\alpha}(f).
+        $$
+        Since f is lower semicontinuous at $x^{*}$, we have 
+        $$
+            \inf_{E} f \leq f(x^*) \leq \varliminf_{x_{n_k} \to x^{*}} 
+            f(x_{n_k}) %
+            = \varliminf_{n \to \infty} f(x_n) = \lim_{n \to \infty} f(x_n) = 
+            \inf_{E} f.
+        $$
+        This means that $f(x^{*}) = \inf_{E} f$, that is, $f$ achieves its 
+        minimum
+        on $E$ at the point $x^{*}$. If 
+        $$
+            \alpha = \inf_{x \in E} f(x),
+        $$
+        then
+        $$
+            l_{\alpha}(f) = \left\{ x \in E : f(x) \leq \inf_{x \in E} f(x) 
+            \right\}.
+        $$
+        By the definition of infimum we have that 
+        $$
+            f(x) = \inf_{x \in E} f(x).
+        $$
+        Thus, any element of $l_{\alpha}(f)$ is a global minimum. 
+    \end{proof}
+    
+    \begin{corollary}
+        A lower semicontinuous function $f : K \to \mathbb{R}$ on a compact
+        metric space $K$ achieves its global minimum on $K$.
+    \end{corollary}
+    \begin{proof}
+        Note that all sublevel sets are closed because $f$ is lower 
+        semicontinuous.
+        Also, we know that all closed subsets of a compact set are compact. 
+        Therefore,
+        the Theorem \eqref{thm2.41} implies that $f$ achieves its global 
+        minimum on $K$.
+    \end{proof}
+    
+    \begin{definition}
+        A function $f : D \to \mathbb{R}$ on a subset $D$ of a normed vector 
+        space $E$
+        is called coercive if 
+        $$
+            f(x) \to \infty \text{ as } \norm{x} \to + \infty.
+        $$
+    \end{definition}
+%
+    \begin{corollary}
+        Let $f : D \to \mathbb{R}$ be a lower semicontinuous function defined on
+        a metric space  (or topological?) $D$.
+        \begin{itemize}
+            \item[a)]
+                If $D$ is compact, or
+            \item[b)] $D$ is a subset of a finite-dimensional normed vector 
+            space
+            $E$ and $f$ is coercive,
+        \end{itemize}
+        then $f$ achieves a global minimum on $D$.
+    \end{corollary}
+    \begin{proof}
+        Consider the sublevel set
+        $$
+            l_{\alpha}(f) = \{ x \in D : f(x) \leq \alpha \}.
+        $$
+        Since $f$ is coercive there is $\delta_{\alpha} > 0$ such that
+        $$
+            \norm{x} > \delta_{\alpha}
+        $$
+        which implies $f(x) > \alpha $. Then, for any $y \in l_{\alpha}(f)$, 
+        $\norm{y} \leq \delta_{\alpha}$. Thus, the sublevel set $l_{\alpha}(f)$
+        is bounded and also close because $f$ is lsc. Hence $l_{\alpha}(f)$ is
+        compact and the conclusion follows from Theorem \eqref{thm2.41}.
+    \end{proof}
+
+
+
+
+
+
+
+
+
+
+

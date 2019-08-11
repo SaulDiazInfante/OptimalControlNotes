@@ -1,12 +1,16 @@
 \section{Background}
 
-In this section, we present some results which will be used in the following sections. These results are presented mostly in \cite{Yong2015}.
-
-Let us introduce some spaces. For any $0\leq t< T<\infty$ and $1\leq p <\infty$, define
-
-\begin{equation*}
-C([t,T];\mathbb{R}^n)=\{\varphi:[t,T]\rightarrow \mathbb{R}^n | \varphi(\cdot)\,\mbox{is continuous}\},
-\end{equation*}
+    In this section, we present some results which will be used in the 
+    following sections. These results are presented mostly in \cite{Yong2015}.
+    Let us introduce some spaces. For any 
+    $0\leq t< T<\infty$ and $1\leq p <\infty$, define
+    
+    \begin{equation*}
+        C([t,T];\mathbb{R}^n)=\{
+            \varphi:[t,T]\rightarrow \mathbb{R}^n | 
+            \varphi(\cdot)\,\mbox{is continuous}
+        \},
+    \end{equation*}
 
 \begin{equation*}
 \displaystyle L^{\infty}(t,T;\mathbb{R}^n)=\{\varphi:[t,T]\rightarrow \mathbb{R}^n | \varphi(\cdot)\,\mbox{measurable},\, \displaystyle \mbox{esssup}_{s\in[t,T]}|\varphi(s)|<\infty\},
@@ -155,25 +159,30 @@ $$\lim_{k\rightarrow \infty}||\frac{1}{N}\sum_{j=1}^{N}\varphi_{k_j}(\cdot)-\bar
 	when $N\rightarrow 0$. Now, consider that $\bar{\varphi}(\cdot)\neq 0$, thus $\varphi_{k}(\cdot)-\bar{\varphi}(\cdot)=0$, and we can apply the previous steps.
 \end{proof}
 
-\begin{lemma}\label{FL}[Filippov]
-	Let $U$ be a complete separable metric space whose metric is denoted by $d(\cdot,\cdot)$. Let $g:[0,T]\times U\rightarrow \mathbb{R}^n$ be a map which is measurable in $t\in[0,T]$ and
-	
-	\begin{center}
-			$|g(t,u)-g(t,v)|\leq \omega(d(u,v))$, for every $u,v\in U$, $t\in [0,t],$
-	\end{center}
-
-	 for some continuous and increasing function $\omega:\mathbb{R}_{+}\rightarrow \mathbb{R}_{+}$ with $\omega(0)=0$, called a modulus of continuity. Moreover,
-	 
-	\begin{equation*}
-	0\in g(t,U)\,\,\,a.e. \,\,t\in [0,t].
-	\end{equation*}
-	
-	Then there exists a measurable map $u:[0,T]\rightarrow U$, such that 
-	
-	\begin{equation}\label{eq1.17}
-	g(t,u(t))=0\,\, a.e.\,\, t\in [0,T].
-	\end{equation}
-	
+\begin{lemma}
+    \label{FL}[Filippov]
+    Let $U$ be a complete separable metric space whose metric is denoted by 
+    $d(\cdot,\cdot)$. Let $g:[0,T]\times U\rightarrow \mathbb{R}^n$ be a map 
+    which is measurable in $t\in[0,T]$ and
+    
+    \begin{center}
+        $|g(t,u)-g(t,v)|\leq \omega(d(u,v))$, for every $u,v\in U$, $t\in 
+        [0,t],$
+    \end{center}
+%
+     for some continuous and increasing function 
+     $\omega:\mathbb{R}_{+}\rightarrow \mathbb{R}_{+}$ with $\omega(0)=0$, 
+     called a modulus of continuity. Moreover,
+%
+    \begin{equation*}
+        0\in g(t,U)\,\,\,a.e. \,\,t\in [0,t].
+    \end{equation*}
+    
+    Then there exists a measurable map $u:[0,T]\rightarrow U$, such that 
+    
+    \begin{equation}\label{eq1.17}
+        g(t,u(t))=0\,\, a.e.\,\, t\in [0,T].
+    \end{equation}
 \end{lemma}
 
 \begin{proof}

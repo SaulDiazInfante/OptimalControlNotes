@@ -1,0 +1,740 @@
+\section{Aplication}
+
+In this section, we see a optimal Control applied to vaccination and Treatment 
+for SIR model [refer].
+
+Optimal control theory is applied to suggest the most effective mitigation 
+strategy to minimize the number of individuals who become infected in the 
+course of an infection while efficiently balancing vaccination and treatment 
+applied to the models with various cost scenarios. Optimal control is a  
+mathematical technique derived from the calculus of variations.
+
+Accidental and intentional introduction of infectious diseases  to previously 
+naive geographic regions has brought more focus and attention to the 
+development of response plans to such scenarios.
+
+All levels of government and public health officials are searching for answers 
+to identify the best strategies for intervention prior to what may be an 
+inevitable event.
+
+The first step is to represent the epidemiology of the disease divided in 
+subpopulations, called compartments, that represent the various stage of the 
+disease progression.
+
+For example, Pontryagin’s maximum principle allows the calculation of the 
+optimal control for an ordinary differential equation model system with a given 
+constraint.
+
+The question  we study in this case is whether this underlying epidemic 
+structure significantly impacts the predicted optimal control strategy for 
+administering vaccination and / or treatment.
+
+We present the SIR model analysis in detail including, the proof of uniqueness 
+and existence of the optimal control system. In this model, we consider a 
+logistic growth as defined by the following state equation:
+
+\begin{eqnarray}\label{eq.1.4.SIR}
+\dot{S}  &=& \mu N-\beta\frac{SI}{N}-\nu S -\mu \frac{NS}{K}, \label{eq.1.4.1}  
+\\
+\dot{I}   &=& \beta\frac{SI}{N} - (\gamma+\tau+\delta) I -\mu \frac{IN}{K}, 
+\label{eq.1.4.2} \\
+\dot{R} &=& (\gamma+\tau) I+\nu S - \mu \frac{NR}{K},  \label{eq.1.4.3}
+\end{eqnarray}
+
+subject to the boundary conditions
+
+\begin{equation}\label{eq.1.4.4}
+S(0)=S_0,\,\, I(0)=I_0,\,\, R(0)=R_0.
+\end{equation}
+
+The variables,  $S,I, R$ represent the susceptible, infections and removed 
+classes, respectively. We assume a logistic growth of the total population 
+$N=S+I+R$ with carrying capacity $K$, and assume the new births enter in the 
+susceptible class.
+
+$\beta :$ approximates the average number of contacts with infectious 
+individuals needed to make one person ill in each unit of time.
+$\mu :$ approximates the average number of individuals that birth/death in each 
+unit of time.
+
+$\gamma :$ approximates the average number of infectious individuals removed 
+from infection class to removed class in each unit of time.
+
+$\delta :$ approximates the average number of individuals that dies by the 
+disease in each unit of time.
+
+We see that $\beta \frac{SI}{N}$ is the number of susceptibles becomes 
+infectious in each unit of time, $\mu \frac{SN}{K}$ is the number of 
+susceptibles that dies in each unit of time, similarly in the other terms. 
+
+$\nu (t):$ control function measures the rates at which susceptibles are 
+vaccinated in each time period.
+
+$\tau (t):$ control function measures the rates at which infectious individuals 
+are treated in each time period.
+
+Note that control $\nu$ moves individuals from the $S$ class to the $R$ class 
+and the control $\tau$ moves individuals from the $I$ class to the $R$ class.
+
+Given initial population sizes $S_0,I_0,R_0$, we seek the best mitigation 
+strategy for the outbreak modeled in equation (\ref{})-(\ref{}) by optimally 
+defining bounded, Lebesgue integrable control functions $\nu (t)$ and $\tau 
+(t)$.
+
+Our goal is to minimize the number of people who become infected, and thus also 
+the number of people who die due to the infection, while also minimizing the 
+effort of vaccinating and treating the population. Thus we seek minimizing the 
+following objective functional
+
+\begin{equation}\label{eq.1.4.5}
+J(\nu,\tau)=\int_{0}^{T} [B_1 I(t)+B_2[\frac{R(t)}{K}]^m \nu^2(t)+B_3\tau^2(t)] 
+dt,
+\end{equation}
+
+where $m \geq 1$.
+
+The constants $B_1,B_2,B_3$ have a dual role. On one hand, they are needed to 
+balance the units in the integrand and $\nu$ and $\tau$ are treatment rates and 
+will be necessarily lies between 0 and 1.
+
+The remaining term in our objective functional seeks to increase the expense of 
+vaccination when most of the population has either been vaccinated or has 
+immunity from a prior infection.
+
+We assume there are practical limitations on the maximum rate at which 
+individuals who may be vaccinated or treated in a given time period and we 
+define positive constants $\nu_{max}$ and $\tau_{max}$ accordingly.
+We define the set of admissible controls to be 
+
+\begin{equation}\label{eq.1.4.6}
+\Omega =\{(\nu,\tau)\in L^1(0,T) |  (\nu (t), \tau (t))\in [0,\nu_{max}]\times 
+[0,\tau_{max}], \mbox{for every}\, t\in [0,T]\}.
+\end{equation}
+
+We seek an optimal control pair $(\nu^*,\tau^*)$ such that
+
+\begin{equation}\label{eq.1.4.7}
+J(\nu^*,\tau^*)=\min_{\Omega}J(\nu,\tau).
+\end{equation}
+
+Now, we need deduce the sufficient conditions for the existence of a solution 
+to the optimal control problem.
+
+A high death rate from disease could theoretically cause the population to 
+vanish, and the existence theorem must assume that the external death rate 
+$\delta$ is smaller that the population intrinsic growth, or turnover, rate 
+$\mu$.
+
+\begin{theorem}\label{Teo.Ex.Ap}
+There exists an optimal control pair $\nu^*(t),\tau^*(t),$ and corresponding 
+solution $S^*,I^*,R^*$ to the state initial value problem 
+(\ref{eq.1.4.1})-(\ref{eq.1.4.4}) that minimizes $J(\nu,\tau)$ over $\Omega$.
+\end{theorem}
+
+\begin{proof}
+We referer to the conditions in Theorem III.4.1 and its Corollary in Flaming 
+and Rishel []. The requirements there on the set of admissible controls 
+$\Omega$ and on the set of end conditions are clearly met here.
+
+The following nontrivial requirements from Fleming and Rishel’s theorem are 
+listed and later verified below:
+
+The set of all solutions to system (1)-(4) with corresponding control functions 
+in $\Omega$ is nonempty.
+The state system can be written as a linear function of the control variables 
+with coefficients dependent on time and the state variables.
+The integrand $L$ in equation (\ref{eq.1.4.6}) is convex on $\Omega$ and 
+additionally satisfies $L(t,S,I,R,\nu,\tau) \geq c_1 |(\nu,\tau)|^{\beta}-c_2$, 
+where $c_1>0$ and $\beta>1$.
+In order to establish condition a), we refer to Theorem 3.1, by 
+Picard-Lindelof, (existence theorem of solution for EDO). If the solutions to 
+the state equations are a priori bounded and if the state equations are 
+continuous and Lipschitz in the state variables, then there is a unique 
+solution corresponding to every admissible control pair in $\Omega$.
+
+Thus, we begin establishing bounds on $N=S+I+R$, and, by extension, $S,I,R$. 
+Note that N satisfies the modified logistic equation
+
+\begin{equation}\label{eq.1.4.8}
+\dot{N}=\mu N(1-\frac{N}{K})-\delta I,
+\end{equation}
+
+and assume that $N(0)=N_0$. We can see that, if $N>K$, then N is decreasing. 
+Thus, $N$ is bounded about by $N_0$. If $N<K$, then N is increasing. Thus, 
+again $N$ is bounded by $K$. This imply that $N$ is bounded by $\max (N_0,K)$ 
+and $\min (N_0,K)$. Note that by extension, we can see that $S,I,R$ are upper 
+bounded by the same bound for $N$.
+
+With bounds established above, its follows that the state system is continuous 
+and bounded. it is equally direct to show the boundedness of the partial 
+derivates with respect to the state variables in the state system, which 
+establishes that the system is Lipschitz with respect to the state variables. 
+This completes the proof that condition a) holds.
+
+Condition b) is verified by observing the linear dependence of the state 
+equations on controls $\nu$ and  $\tau$.
+
+Finally, to verify condition c) we note that since the integrand $L$ of the 
+objective functional is quadratic in the controls. $L$ is convex in the 
+controls. To prove that bound on the $L$ we note that by the definition of 
+$\Omega$ we have $B_2 \nu^2\leq B_2$, and $B_2\nu^2-B_2\leq 0$. Thus $L=B_1 
+I(t)+B_2[\frac{R}{K}]^m \nu^2(t) +B_3\tau^2(t)\geq B_3\tau^2 (t)\geq 
+B_2\nu^2+B_3\tau^2-B_2\geq \min (B_2,B_3)(\nu^2+\tau^2)-B_2$.
+\end{proof}
+
+Now, we apply Pontryagin's Maximun Principle and convert the optimization 
+problem to the problem of finding the point-wise minimun relative to $\nu$ and 
+$\tau$ of the Hamiltonian.
+
+\begin{theorem}
+Given the optimal control pair $(\nu^*,\tau^*)$ and corresponding solutions to 
+the state system (\ref{eq.1.4.1})-(\ref{eq.1.4.4}) $S^*,I^*,R^*$ that minimize 
+the objetive functional (\ref{eq.1.4.5}) there exist adjoint variables 
+$\lambda_1$, $\lambda_2$ and $\lambda_3$ satisying
+
+\begin{eqnarray}\label{eq.1.4.adj}
+\dot{\lambda_1}&=& \frac{\mu}{K}[\lambda_1(S+N-K)+\lambda_2 I+\lambda_3 
+R]+\beta \frac{I(N-S)}{N^2}(\lambda_1-\lambda_2)+\nu(\lambda_1-\lambda_3), 
+\label{eq.1.4.10}\\
+\dot{\lambda_2}&=& -B_1+\frac{\mu}{K}[\lambda_1(S-K)+\lambda_2(N+I)+\lambda_3 
+R]+\beta\frac{S(N-I)}{N^2}(\lambda_1-\lambda_2)\nonumber\\
+&+&\delta \lambda_2+(\gamma+\tau)(\lambda_2-\lambda_3),\label{eq.1.4.11}\\
+\dot{\lambda_3}&=& mB_2 \nu^2\frac{R^{m-1}}{K^m}+\frac{\mu}{K}[(S-K)\lambda_1 
++\lambda_2 I+(N+R)\lambda_3]+\beta 
+\frac{SI}{N^2}(\lambda_2-\lambda_1),\label{eq.1.4.12}
+\end{eqnarray}
+
+with transversality conditions
+
+\begin{equation}\label{eq.1.4.13}
+\lambda_1(T)=\lambda_2(T)=\lambda_3(T)=0.
+\end{equation}
+
+Fuethermore, as long as the optimal removed class $R^*$ is nonzero, we may 
+characterize the optimal pair by the continuous functions
+
+\begin{eqnarray}
+\nu^*&=&\min 
+\left(\max\left(0,\frac{S^*(\lambda_1-\lambda_3)}{2B_2[\frac{R^*}{K}]^m}\right),\nu_{max}\right),\nonumber\\
+\tau^*&=&\min 
+\left(\max\left(0,\frac{I^*(\lambda_2-\lambda_3)}{2B_3}\right),\tau_{max}\right)
+ \label{eq.1.4.14}.
+\end{eqnarray}
+\end{theorem}
+
+\begin{proof}
+The result follows from a direct application o a version of Pontryagin's 
+Maximum Principle for bounded controls [Morton]. We form the Hamiltonian H:
+
+$$H=g(t,u(t),X(t))+\lambda_1\dot{S}+\lambda_2\dot{I}+\lambda_3\dot{R}.$$
+Thus,
+
+\begin{eqnarray}\label{eq.1.4.15}
+H&=&B_1I+B_2 [\frac{R}{K}]^m\nu^2+B_3\tau^2+\lambda_1[\nu 
+N-\mu\frac{N}{K}S-\beta\frac{SI}{N}-\nu S]\nonumber\\
+&+&\lambda_2[\beta 
+\frac{SI}{N}-(\delta+\gamma+\tau)I-\mu\frac{NI}{K}]+\lambda_3[(\gamma+\tau)I+\nu
+ S-\mu\frac{NR}{K}].
+\end{eqnarray}
+
+Again, by the Pontryagin's Maximum Principle, The adjoint equations are given 
+by the equations $\dot{\lambda_1}=-\frac{\partial H}{\partial S}$, 
+$\dot{\lambda_2}=-\frac{\partial H}{\partial I}$, 
+$\dot{\lambda_3}=-\frac{\partial H}{\partial R}$, and must satisfy 
+transversality conditions $\lambda_i(T)=0$ for $i=1,2,3$. 
+
+Finally, the optimal conditions dictate that $\frac{\partial H}{\partial 
+\nu}=\frac{\partial H}{\partial \nu}=0$, then
+
+$$\frac{\partial H}{\partial \nu}=2B_2\left[\frac{R}{K}\right]^m\nu-\lambda_1 
+S+\lambda_3 S\left|_{(S^*,I^*,R^*)}\right.=0,$$
+
+and we get 
+
+$$\nu^*=\frac{S^*(\lambda_1-\lambda_3)}{2B_2\left[\frac{R}{K}\right]^m}.$$
+
+$$\frac{\partial H}{\partial \tau}=2B_3\tau-\lambda_2 I+\lambda_3 
+I\left|_{(S^*,I^*,R^*)}\right.=0,$$
+
+and we get 
+
+$$\tau^*=\frac{I^*(\lambda_2 -\lambda_3)}{2B_3}.$$
+
+This values are not necessay positive, then we need $\max\left 
+(0,\frac{S^*(\lambda_1-\lambda_3)}{2B_2\left[\frac{R}{K}\right]^m}\right )$, 
+$\max\left ( 0,\frac{I^*(\lambda_2 -\lambda_3)}{2B_3}\right )$, and by 
+boundness we get (\ref{eq.1.4.14}). Observe that by the characterization of the 
+controls given in (\ref{eq.1.4.14}) and the nonzero assumption for $R$, it 
+follows that the controls are continuous in time.	
+\end{proof}
+
+The optimality system is defined as is the compilation of the state equations 
+(\ref{eq.1.4.1})-(\ref{eq.1.4.3}), the initial conditions (\ref{eq.1.4.4}), the 
+adjoint equations (\ref{eq.1.4.10})-(\ref{eq.1.4.12}), and the transversality 
+conditions (\ref{eq.1.4.13}), with the optimality equations (\ref{eq.1.4.14}) 
+sustituted into the state and adjoint equations.
+
+In the previous sections we present results or which we guarantee the existence 
+of an optimal pair, but the uniqueness off this pair can not be guaranteed. 
+Therefore, we present, for this system, the following result in which we 
+guarantee the uniqueness of the optimal pair for a small time interval.
+
+\begin{theorem}
+	For $T$ sufficiently small the optimality system is unique.
+\end{theorem}
+\begin{proof}
+We must first consider bounds on the adjoint system. Note that bounds for the 
+state system were established in Theorem	\ref{Teo.Ex.Ap}. To see that the 
+adjoint system is bounded, we rearrange equations 
+(\ref{eq.1.4.10})-(\ref{eq.1.4.12}):
+
+\begin{eqnarray*}
+\dot{\lambda_1}&=& 
+\lambda_1\left[\frac{\mu}{K}(S+N-K)+\beta\frac{I(N-S)}{N^2}+\nu\right]+\lambda_2\left[\frac{\mu}{K}I-\beta\frac{I(N-S)}{N^2}\right]+\lambda_3\left[\frac{\mu}{K}R-\nu\right],\\
+\dot{\lambda_2}&=& 
+-B_1+\lambda_1\left[\frac{\mu}{K}(S-K)+\beta\frac{S(N-I)}{N^2}\right]+\lambda_2\left[\frac{\mu}{K}(N+I)-\beta\frac{S(N-I)}{N^2}+\delta+\gamma+\tau
+ \right]\\
+&+&\lambda_3\left[\frac{\mu}{K}R-\gamma-\tau\right],\\
+\dot{\lambda_3}&=& 
+mB_2\nu^2\frac{R^{m-1}}{K^m}+\lambda_1\left[\frac{\mu}{K}(S-K)-\beta\frac{SI}{N^2}\right]+\lambda_2\left[\frac{\mu}{K}I+\beta\frac{SI}{N^2}\right]+\lambda_3\left[\frac{\mu}{K}(N+R)\right].
+\end{eqnarray*}
+
+We recall that $N=S+I+R$, that $S,I,R$ are nonnegative, and that $N>0$. Thus, 
+$0\leq \frac{I(N-S)}{N^2},\frac{SI}{N^2},\frac{S(N-I)}{N^2}\leq 1$. We recall 
+the bounds $0\leq \nu\leq \nu_{max}$ and $0\leq \tau \leq \tau_{max}$, and with 
+thid substitution we see the following bounds for each equation:
+
+\begin{eqnarray*}
+\dot{\lambda_1}&=& 
+\lambda_1\left[\frac{\mu}{K}(S+N-K)+\beta\frac{I(N-S)}{N^2}+\nu\right]+\lambda_2\left[\frac{\mu}{K}I-\beta\frac{I(N-S)}{N^2}\right]+\lambda_3\left[\frac{\mu}{K}R-\nu\right]\\
+&\leq& 
+\lambda_1\left[\frac{\mu}{K}(S+N-K)+\beta+\nu_{max}\right]+\lambda_2\left[\frac{\mu}{K}I-\beta\right]+\lambda_3\left[\frac{\mu}{K}R-\nu_{max}\right].
+\end{eqnarray*}
+
+\begin{eqnarray*}
+	\dot{\lambda_2}&=& 
+	-B_1+\lambda_1\left[\frac{\mu}{K}(S-K)+\beta\frac{S(N-I)}{N^2}\right]+\lambda_2\left[\frac{\mu}{K}(N+I)-\beta\frac{S(N-I)}{N^2}+\delta+\gamma+\tau
+	 \right]\\
+	&+&\lambda_3\left[\frac{\mu}{K}R-\gamma-\tau\right]\leq-B_1+\lambda_1\left[\frac{\mu}{K}(S-K)+\beta\right]+\lambda_2\left[\frac{\mu}{K}(N+I)-\beta+\delta+\gamma+\tau_{max}
+	 \right]\\
+	&+&\lambda_3\left[\frac{\mu}{K}R-\gamma-\tau_{max}\right].
+\end{eqnarray*}
+	
+\begin{eqnarray*}
+	\dot{\lambda_3}&=& 
+	mB_2\nu^2\frac{R^{m-1}}{K^m}+\lambda_1\left[\frac{\mu}{K}(S-K)-\beta\frac{SI}{N^2}\right]+\lambda_2\left[\frac{\mu}{K}I+\beta\frac{SI}{N^2}\right]+\lambda_3\left[\frac{\mu}{K}(N+R)\right]\\
+	&\leq& 
+	mB_2\nu^2_{max}+\lambda_1\left[\frac{\mu}{K}(S-K)-\beta\right]+\lambda_2\left[\frac{\mu}{K}I+\beta\right]+\lambda_3\left[\frac{\mu}{K}(N+R)\right]
+\end{eqnarray*}
+
+Hence, the adjoint system is bounded by linear systems with bounded 
+coefficients. Thus, the sub- and super-solutions are uniformly bounded, 
+establishing bounds for the adjoint system in finite time.
+
+Now, suppose that there are two solutionsto the optimality system:
+
+$$(S(t),I(t),R(t),\lambda_1(t),\lambda_2(t),\lambda_3(t))\,\,\mbox{and}\,\, 
+(\bar{S}(t),\bar{I}(t),\bar{R}(t),\bar{\lambda}_1(t),\bar{\lambda}_2(t),\bar{\lambda}_3(t)).$$
+
+To show that the two solutions are equivalent, it is convenient to make a 
+change of variables. We define 
+$s,i,r,\phi_1,\phi_2,\phi_3,\bar{s},\bar{i},\bar{r},\bar{\phi}_1,\bar{\phi}_2$ 
+and $\bar{\phi}_3$ so that
+
+$$S(t)=e^{\alpha t}s(t),\, I(t)=e^{\alpha t}i(t)\, R(t)=e^{\alpha t}r(t),$$
+
+$$\lambda_1(t)=e^{-\alpha t}\phi_1(t), \lambda_2(t)=e^{-\alpha t}\phi_2(t),\, 
+\lambda_3(t)=e^{-\alpha t}\phi_3(t),$$
+
+where $\alpha$ is a constant to be chosen later. The barred variables are 
+transformed similarly. Note that the bounds for the state and adjoint variables 
+can be extended to bounds for the new variables. With the new variables the 
+optimality conditions become
+
+\begin{equation}\label{eq.1.4.33}
+\nu=\min\left(\max\left(0,\frac{e^{2\alpha 
+t}s(t)(\phi_1(t)-\phi_3(t))}{2B_2\left[\frac{e^{\alpha 
+t}r(t)}{K}\right]^m}\right),\nu_{max}\right),
+\end{equation}
+
+\begin{equation}\label{eq.1.4.34}
+\tau=\min\left(\max\left(0,\frac{e^{2\alpha 
+t}i(t)(\phi_2(t)-\phi_3(t))}{2B_3}\right),\tau_{max}\right),
+\end{equation}
+
+and likewise the optimality conditions for the barred equations could be 
+defined. For convenience we define $n(t)=s(t)+i(t)+r(t)$ and we note that 
+$N(t)=e^{\alpha t}n(t)$. Note that we omit the dependence on time in the 
+following except in the case that a specific time is intended. In the next 
+part, we consider the difference of the resulting equations for $s$ and 
+$\bar{s}$, $i$ and $\bar{i}$, and so on, and we the simpliy the resulting 
+equations by integration with the use of appropiate integrating factors.
+
+\begin{eqnarray*}
+	\alpha e^{\alpha t}s+ e^{\alpha t}\dot{s}&=&\mu e^{\alpha t}n-\beta 
+	\frac{e^{2\alpha t}si}{e^{\alpha t} n}-\nu e^{\alpha t} s-\mu 
+	\frac{e^{2\alpha t} ns}{K},\\
+	\alpha s+\dot{s}&=&\mu n-\beta \frac{si}{n}-\nu s-\mu e^{\alpha t}\frac{n 
+	s}{k}.
+\end{eqnarray*}
+
+Now, we substract from the above the corresponding barred equation to get:
+
+\begin{equation*}
+\alpha 
+(s-\bar{s})+(\dot{s}-\dot{\bar{s}})=\mu(n-\bar{n})-\beta\left[\frac{si}{n}-\frac{\bar{s}\bar{i}}{\bar{n}}\right]-(\nu
+ s-\bar{\nu}\bar{s})-\mu e^{\alpha 
+t}\left[\frac{sn}{K}-\frac{\bar{s}\bar{n}}{K}\right]. 
+\end{equation*}
+
+We multiply by $(s-\bar{s})$ and integrate from 0 (at which  the state equation 
+variables are equivalent) to $T$ yielding
+
+\begin{eqnarray}
+\frac{1}{2}(s(T)-\bar{s}(T))^2&+&\alpha\int_{0}^{T}(s-\bar{s})^2dt=\mu\int_{0}^{T}(n-\bar{n})(s-\bar{s})dt-\beta\int_{0}^{T}\left[\frac{si}{n}-\frac{\bar{s}\bar{i}}{\bar{n}}\right](s-\bar{s})dt\nonumber\\
+&-&\int_{0}^{T}(\nu s-\bar{\nu}\bar{s})(s-\bar{s})dt-\frac{\mu}{K}\int_{0}^{T} 
+e^{\alpha t}\left[sn-\bar{s}\bar{n}\right](s-\bar{s})dt. \label{eq.1.4.35}
+\end{eqnarray}
+
+The remaining equations are manipulated similarly, with derivations and 
+dependence on time omitted in the interest of space. The specific 
+characterization of the controls as given in equations (\ref{eq.1.4.33}) and 
+(\ref{eq.1.4.34}) is represented simply by $\nu,\bar{\nu},\tau$ and 
+$\bar{\tau}$ in the six manipulated equations:
+
+\begin{eqnarray}
+\frac{1}{2}(i(T)-\bar{i}(T))^2&+&\alpha\int_{0}^{T}(i-\bar{i})^2dt=\beta\int_{0}^{T}\left[\frac{si}{n}-\frac{\bar{s}\bar{i}}{\bar{n}}\right](i-\bar{i})dt-(\gamma+\delta)\int_{0}^{T}(i-\bar{i})^2dt\nonumber\\
+&-&\int_{0}^{T}(\tau 
+i-\bar{\tau}\bar{i})(i-\bar{i})dt-\frac{\mu}{K}\int_{0}^{T} e^{\alpha 
+t}\left[in-\bar{i}\bar{n}\right](i-\bar{i})dt. \label{eq.1.4.36}
+\end{eqnarray}
+
+\begin{eqnarray}
+\frac{1}{2}(r(T)-\bar{r}(T))^2&+&\alpha\int_{0}^{T}(r-\bar{r})^2dt=\gamma\int_{0}^{T}(i-\bar{i})(r-\bar{r})dt+\int_{0}^{T}(\tau
+ i-\bar{\tau}\bar{i})(r-\bar{r})dt\nonumber\\
+&+&\int_{0}^{T}(\nu s-\bar{\nu}\bar{s})(r-\bar{r})dt-\frac{\mu}{K}\int_{0}^{T} 
+e^{\alpha t}\left[rn-\bar{r}\bar{n}\right](r-\bar{r})dt. \label{eq.1.4.37}
+\end{eqnarray}
+
+And for adjoint variables we get:
+
+\begin{eqnarray}
+-\frac{1}{2}(\phi_1(0)-\bar{\phi_1}(0))^2&-&\alpha\int_{0}^{T}(\phi_1-\bar{\phi_1})^2dt=\frac{\mu}{K}\int_{0}^{T}e^{\alpha
+ t}(\phi_1-\bar{\phi}_1)\{[\phi_1(n+s)+\phi_2 i +\phi_3 r]dt\nonumber\\
+&-&[\bar{\phi}_1(\bar{n}+\bar{s})+\bar{\phi}_2 \bar{i} +\bar{\phi}_3 
+\bar{r}]\}dt-\mu\int_{0}^{T}(\phi_1-\bar{\phi_1})^2dt \nonumber\\
+&+&\beta\int_{0}^{T}e^{\alpha 
+t}(\phi_1-\bar{\phi}_1)\left[\frac{i(n-s)}{n^2}(\phi_1-\phi_2)-\frac{\bar{i}(\bar{n}-\bar{s})}{\bar{n}^2}(\bar{\phi}_1-\bar{\phi}_2)\right]dt
+ \nonumber\\
+&+&\int_{0}^{T} 
+(\phi_1-\bar{\phi}_1)[\nu(\phi_1-\phi_3)-\bar{\nu}(\bar{\phi_1}-\bar{\phi_3}))]dt.
+ \label{eq.1.4.38}
+\end{eqnarray}
+
+\begin{eqnarray}
+-\frac{1}{2}(\phi_2(0)-\bar{\phi_2}(0))^2&-&\alpha\int_{0}^{T}(\phi_2-\bar{\phi_2})^2dt=\frac{\mu}{K}\int_{0}^{T}e^{\alpha
+ t}(\phi_1s-\bar{\phi}_1\bar{s})(\phi_2-\bar{\phi_2})dt\nonumber\\
+&-&\mu\int_{0}^{T}(\phi_1-\bar{\phi_1})(\phi_2-\bar{\phi_2})dt+\frac{\mu}{K}\int_{0}^{T}e^{\alpha
+ t}[\phi_2(n+i)-\bar{\phi}_2(\bar{n}+\bar{i}) \nonumber\\
+&+& (\phi_3 
+r-\bar{\phi_3}\bar{r})](\phi_2-\bar{\phi}_2)dt+\beta\int_{0}^{T}\left[\frac{s(n-i)}{n^2}(\phi_1-\phi_2)-\frac{\bar{s}(\bar{n}-\bar{i})}{\bar{n}^2}(\bar{\phi}_1-\bar{\phi}_2)\right]
+ \nonumber\\
+&+&(\phi_2-\bar{\phi_2})dt+\delta\int_{0}^{T}(\phi_2-\bar{\phi_2})^2dt 
++\gamma\int_{0}^{T}[(\phi_2-\phi_3)-(\bar{\phi}_2-\bar{\phi}_3)](\phi_2-\bar{\phi_2})dt
+ \nonumber\\
+&+&\int_{0}^{T}[\tau(\phi_2-\phi_3)-\bar{\tau}(\bar{\phi}_2-\bar{\phi}_3)](\phi_2-\bar{\phi_2})dt.
+ \label{eq.1.4.39}
+\end{eqnarray}
+
+\begin{eqnarray}
+-\frac{1}{2}(\phi_3(0)-\bar{\phi}_3(0))^2&-&\alpha\int_{0}^{T}(\phi_3-\bar{\phi}_3)^2dt=\frac{m
+ B_2}{K^m}\int_{0}^{T}e^{m\alpha 
+t}[\nu^2r^{m-1}-\bar{\nu}^2\bar{r}^{m-1}](\phi_3-\bar{\phi}_3)dt\nonumber\\
+&+&\frac{\mu}{K}\int_{0}^{T}e^{\alpha t}(\phi_1 
+s-\bar{\phi_1}\bar{s})(\phi_3-\bar{\phi_3})dt 
+-\mu\int_{0}^{T}(\phi_1-\bar{\phi_1})(\phi_3-\bar{\phi_3})dt\nonumber\\
+&+&\beta\int_{0}^{T}\left[\frac{s i}{n^2}(\phi_2-\phi_1)-\frac{\bar{s} 
+\bar{i}}{\bar{n}^2}(\bar{\phi}_2-\bar{\phi}_1)\right](\phi_3-\bar{\phi_3})dt+\frac{\mu}{K}\int_{0}^{T}e^{\alpha
+ t}\{[ \nonumber\\
+&&\phi_2 i+\phi_3(n+r)]-[\bar{\phi}_2 
+\bar{i}+\bar{\phi}_3(\bar{n}+\bar{r})]\}(\phi_3-\bar{\phi_3})dt. 
+\label{eq.1.4.40}
+\end{eqnarray}
+
+We define
+
+\begin{equation*}
+	\Psi(t)=(s(t)-\bar{s}(t))^2+(i(t)-\bar{i}(t))^2+(r(t)-\bar{r}(t))^2
+\end{equation*}
+
+and
+
+\begin{equation*}
+\Phi(t)=(\phi_1(t)-\bar{\phi_1}(t))^2+(\phi_2(t)-\bar{\phi_2}(t))^2+(\phi_3(t)-\bar{\phi_3}(t))^2.
+\end{equation*}
+
+Observe that $\Psi(t)\geq 0$ and $\Phi(t)\geq 0$ for every $t$. We multiply 
+equations (\ref{eq.1.4.38})-(\ref{eq.1.4.40}) by $-1$ and then add the 
+resulting equations to equations (\ref{eq.1.4.35})-(\ref{eq.1.4.37}). The 
+left-hand side of the resulting equation become
+
+\begin{equation*}
+	\frac{1}{2}(\Psi(T)+\Phi(0))+\alpha\int_{0}^{T}(\Psi(t)+\Phi(t))dt,
+\end{equation*}
+
+and we work now to bound the right-hand side. An elementary inequality
+
+\begin{equation*}
+(x-y)^2\geq 0\,\,\mbox{implies}\,\, x^2+y^2\geq \frac{1}{2}(x^2+y^2)\geq xy
+\end{equation*}
+
+can be used repeatedly to simplify right-hand expressions. The first is in the 
+common form
+
+\begin{equation}\label{eq.1.4.41}
+(x-\bar{x})(y-\bar{y})\leq (x-\bar{x})^2+(y-\bar{y})^2.
+\end{equation}
+
+Another common expression and needed inequality:
+
+\begin{eqnarray*}
+(xy-\bar{x}\bar{y})(w-\bar{w})&=& 
+(xy-\bar{x}y+\bar{x}y-\bar{x}\bar{y})(w-\bar{w})\\
+&=& y(x-\bar{x})(w-\bar{w})+\bar{x}(y-\bar{y})(w-\bar{w})\\
+&\leq&y[(x-\bar{x})^2+(w-\bar{w})^2]+\bar{x}[(y-\bar{y})^2+(w-\bar{w})^2]\\
+&=& [y(x-\bar{x})^2+\bar{x}(y-\bar{y})^2+(y+\bar{x})(w-\bar{w})^2].
+\end{eqnarray*}
+
+Let define $C=(y+\bar{x})$, where $C$ depends on bounds for $\bar{x}$ and $y$, 
+to get
+
+\begin{equation}\label{eq.1.4.42}
+(xy-\bar{x}\bar{y})(w-\bar{w})\leq C[(x-\bar{x})^2+(y-\bar{y})^2+(w-\bar{w})^2].
+\end{equation}
+
+Several bounds require in turn a bound on $(n-\bar{n})^2$ which follows 
+directly from the definition of $n$:
+
+\begin{equation}\label{eq.1.4.43}
+(n-\bar{n})^2\leq (s-\bar{s})^2+(i-\bar{i})^2+(r-\bar{r})^2.
+\end{equation}
+
+A bound is needed for the expressions with division by $n^2$ in equations 
+(\ref{eq.1.4.38})-(\ref{eq.1.4.40}). We focus on the árticular expression in 
+equation (\ref{eq.1.4.40}), and others would be similar. Note that
+
+\begin{equation*}
+\frac{si}{n^2}-\frac{\bar{s}\bar{i}}{\bar{n}^2}=\frac{1}{n^2\bar{n}^2}[(i-\bar{i})s\bar{n}^2+\bar{i}\bar{n}^2(s-\bar{s})+\bar{i}\bar{s}(\bar{n}-n)(\bar{n}+n)].
+\end{equation*}
+
+In the following, for simplicity we write $Q=\frac{si}{n^2}$ with similar 
+definition for $\bar{Q}$, and rely on bounds for the state variables 
+established in Theorem \ref{Teo.Ex.Ap}.
+
+\begin{eqnarray}
+\left[\frac{si}{n^2}(\phi_2-\phi_1)-\frac{\bar{s}\bar{i}}{\bar{n}^2}(\bar{\phi}_1-\bar{\phi_2})\right]&=&\{(\phi_2-\phi_1)\frac{1}{n^2\bar{n}^2}[(i-\bar{i})s\bar{n}^2+\bar{i}\bar{n}^2(s-\bar{s})\nonumber\\
+&+&\bar{i}\bar{s}(\bar{n}-n)(\bar{n}+n)]+Q(\phi_2-\bar{\phi_2})\nonumber\\
+&+&\left. Q(\bar{\phi_1}-\phi_1)\right\}(\phi_3-\bar{\phi_3})\nonumber \\
+&\leq& C(\Psi+\Phi). \label{eq.1.4.44}
+\end{eqnarray}
+
+where $C$ depends on the bounds for $n$, and by extension $s,i$ and $r$, and 
+the bounds for $\phi_1$ and $\phi_2$. Equations (\ref{eq.1.4.35}) and 
+(\ref{eq.1.4.36}) have terms containing $\frac{si}{n}$ and can be bounded 
+similarly. Using the equality
+
+\begin{equation*}
+\frac{si}{n}-\frac{\bar{s}\bar{i}}{\bar{n}}=\frac{s}{n}(i-\bar{i})+\frac{s\bar{i}}{n\bar{n}}(\bar{n}-n)+(s-\bar{s})\frac{\bar{i}}{\bar{n}}
+\end{equation*}
+
+the following bound can be shown
+
+\begin{equation}\label{eq.1.4.45}
+[(i-\bar{i})-(s-\bar{s})]\left[\frac{si}{n}-\frac{\bar{s}\bar{i}}{\bar{n}}\right]\leq
+ C((i-\bar{i})^2+(n-\bar{n})^2+(s-\bar{s})^2),
+\end{equation}
+
+with $C$ depends on bounds for $s,i,$ and $r$.
+
+Now, we note that a bound for $(\nu-\bar{\nu})^2$ requieres the equation [cite 
+equation], that implies
+
+\begin{eqnarray*}
+	[s\bar{r}^m(\phi_1-\phi_3)-\bar{s}r^m(\bar{\phi_1}-\bar{\phi_3})]^2&=&[s\bar{r}^m(\phi_1-\bar{\phi_1})+(s\bar{r}^m-\bar{s}\bar{r}^m+\bar{s}\bar{r}^m-\bar{s}r^m)\bar{\phi_1}\\
+	&+&s\bar{r}^m(-\phi_3+\bar{\phi_3})+\bar{\phi_3}(\bar{s}r^m-s\bar{r}^m)]^2\\
+	&\leq&11[s^2\bar{r}^{2m}(\phi_1-\bar{\phi_1})^2+s^2\bar{r}^{2m}(\bar{\phi_3}-\phi_3)^2\\
+	&+&\bar{r}^{2m}(s-\bar{s})^2(\bar{\phi_1}^2+\bar{\phi_3}^2)+\bar{s}^2(\bar{r}-r)^2(\bar{\phi_1}^2\\
+	&+&\bar{\phi_3}^2)(m \max(r,\bar{r})^{m-1})^2].
+\end{eqnarray*}	
+	
+The expression $(\nu-\bar{\nu})^2$ can be approximated following [cite,cite] 
+obtaining
+
+\begin{eqnarray}
+	(\nu-\bar{\nu})^2&\leq&\left(\frac{e^{2\alpha 
+	t}s(\phi_1-\phi_3)}{\frac{2B_2}{K^m}e^{m\alpha t}r^m}-\frac{e^{2\alpha 
+	t}\bar{s}(\bar{\phi_1}-\bar{\phi_3})}{\frac{2B_2}{K^m}e^{m\alpha 
+	t}\bar{r}^m}\right)^2\nonumber\\
+	&\leq& 11\left[\frac{K^me^{(2-m)\alpha t}e^{m\alpha 
+	t}}{2B_2R^m}\right]^2[s^2(\phi_1-\bar{\phi_1})^2+s^2(\bar{\phi_3}-\phi_3)^2+(s-\bar{s})^2(\bar{\phi_1}^2+\bar{\phi_3}^2)]\nonumber\\
+	&+&11m^2\left[\frac{K^me^{(2-m)\alpha t}e^{m\alpha t}e^{\alpha 
+	t}}{2B_2\min(R,\bar{R})^m\max(R,\bar{R})}\right][\bar{s}^2(\bar{r}-r)^2(\bar{\phi_1}^2+\bar{\phi_3}^2)]\nonumber\\
+	&\leq&11\left[\frac{K^me^{2\alpha 
+	t}}{2B_2}\right]^2[\max(s)^2[(\phi_1-\bar{\phi_1})^2+(\bar{\phi_3}-\phi_3)^2]+(s-\bar{s})^2\max(\phi_1,\phi_3)^2]\nonumber\\
+	&+& 11m^2\left[\frac{K^me^{3\alpha 
+	t}}{2B_2}\right]^2[\max(s)^24\max(\phi_1,\phi_3)^2(\bar{r}-r)^2]\nonumber\\
+	&\leq& Ce^{6\alpha 
+	t}[(\phi_1-\bar{\phi_1})^2+(\bar{\phi_3}-\phi_3)^2+(s-\bar{s})^2+(\bar{r}-r)^2]\label{eq.1.4.46}
+\end{eqnarray}
+
+with $C$ depends on bounds for $s,\phi_1$ and $\phi_3$ and that $R>1$ which was 
+assumed previously in the derivation of necessary conditions.
+
+A bound on the second control depends on bounds for $\phi_2$ and $i$:
+
+\begin{eqnarray}
+(\tau-\bar{\tau})^2&\leq&\left(\frac{e^{2\alpha 
+t}}{2B_3}[i(\phi_2-\phi_3)-\bar{i}(\bar{\phi_2}-\bar{\phi_3})]\right)^2\nonumber\\
+&\leq& Ce^{4\alpha 
+t}[(i-\bar{i})^2+(\phi_2-\bar{\phi_2})^2+(\phi_3-\bar{\phi_3})^2+(i-\bar{i})^2].\label{eq.1.4.47}
+\end{eqnarray}
+
+The only form that remains to be considered is from equation (\ref{eq.1.4.40}):
+
+\begin{eqnarray}
+&&\frac{mB_2}{K^m}\int_{0}^{T}e^{\alpha m 
+t}[\nu^2r^{m-1}-\bar{\nu}^2\bar{r}^{m-1}](\phi_3-\bar{\phi_3})dt\nonumber\\ 
+&\leq& \frac{mB_2}{K^m}e^{m\alpha 
+T}\int_{0}^{T}[\bar{\nu}^2(\bar{r}-r)\max(\bar{r},r)^{m-2}+(\bar{\nu}^2-\nu^2)r^{m-1}](\phi_3-\bar{\phi_3})dt\nonumber\\
+&\leq& Ce^{2\alpha 
+T}\int_{0}^{T}[\bar{\nu}^2(\bar{r}-r)\max(\bar{R},R)^{m-2}+(\bar{\nu}^2-\nu^2)T^{m-1}](\phi_3-\bar{\phi_3})dt\nonumber\\
+&\leq& Ce^{2\alpha 
+T}\int_{0}^{T}[(\bar{r}-r)^2+(\bar{\nu}^2-\nu^2)^2+(\phi_3-\bar{\phi_3})^2]dt 
+\label{eq.1.4.48}
+\end{eqnarray}
+
+where $C$ depends on bounds for $\nu,R$ and the parameters $m,B_2,K$. The 
+bounds (\ref{eq.1.4.41})-(\ref{eq.1.4.48}) are aplied to the sum of the 
+equations (\ref{eq.1.4.35})-(\ref{eq.1.4.48}), with the latter three modified 
+as described previously, deriving an inequality of the form:
+
+
+
+with the constants dependent on the parameter values and the established bounds 
+for the state and adjoint variables. Rearranging this becomes
+
+\begin{equation}\label{eq.1.4.49}
+\frac{1}{2}[\Psi(T)+\Phi(0)]+(\alpha-\tilde{C}+\hat{C}e^{6\alpha 
+T})\int_{0}^{T}[\Psi(t)+\Phi(t)]dt\leq 0.
+\end{equation}
+
+We now choose $\alpha$ so that 
+
+$$\alpha>\tilde{C}+\hat{C}$$
+
+and note that $\frac{\alpha-\tilde{C}}{\hat{C}}>1$. Subsequently choose $T$ so 
+that 
+
+$$T<\frac{1}{6\alpha}\ln\left(\frac{\alpha-\tilde{C}}{\hat{C}}\right).$$
+
+Then
+
+$6\alpha T<\ln\left(\frac{\alpha-\tilde{C}}{\hat{C}}\right)$ implies 
+$e^{6\alpha T}<\frac{\alpha-\tilde{C}}{\hat{C}}$.
+
+It follows that $\alpha-\tilde{C}+\hat{C}e^{6\alpha T}>0$, so inequality 
+(\ref{eq.1.4.49}) can hold if and only if for every $t\in [0,T]$
+
+$$s(t)=\bar{s}(t),i(t)=\bar{i}(t),r(t)=\bar{r}(t),$$
+$$\phi_1(t)=\bar{\phi_1}(t),\phi_2(t)=\bar{\phi_2}(t),\phi_3(t)=\bar{\phi_3}(t)$$
+
+this imply
+
+$$S(t)=\bar{S}(t),I(t)=\bar{I}(t),R(t)=\bar{R}(t),$$
+$$\lambda_1(t)=\bar{\lambda_1}(t),\lambda_2(t)=\bar{\lambda_2}(t),\lambda_3(t)=\bar{\lambda_3}(t),$$
+
+establising the uniqueness of the optimal control.
+\end{proof}
+
+\begin{eqnarray*}
+\frac{1}{2}[\Psi(T)&+&\Phi(0)]+\alpha\int_{0}^{T}[\Psi(t)+\Phi(t)]dt=\mu\int_{0}^{T}(n-\bar{n})(s-\bar{s})dt\\
+&+&\beta\int_{0}^{T}\left[\frac{si}{n}-\frac{\bar{s}\bar{i}}{\bar{n}}\right](s-\bar{s})dt+\int_{0}^{T}(\nu
+ s-\bar{\nu}\bar{s})(s-\bar{s})dt\\
+&+&\frac{\mu}{K}\int_{0}^{T} e^{\alpha 
+t}\left[sn-\bar{s}\bar{n}\right](s-\bar{s})dt+\beta\int_{0}^{T}\left[\frac{si}{n}-\frac{\bar{s}\bar{i}}{\bar{n}}\right](i-\bar{i})dt\\
+&+&(\gamma+\delta)\int_{0}^{T}(i-\bar{i})^2dt+\int_{0}^{T}(\tau 
+i-\bar{\tau}\bar{i})(i-\bar{i})dt+\frac{\mu}{K}\int_{0}^{T} e^{\alpha 
+t}\left[in-\bar{i}\bar{n}\right](i-\bar{i})dt\\
+&+&\gamma\int_{0}^{T}(i-\bar{i})(r-\bar{r})dt+\int_{0}^{T}(\tau 
+i-\bar{\tau}\bar{i})(r-\bar{r})dt+\int_{0}^{T}(\nu 
+s-\bar{\nu}\bar{s})(r-\bar{r})dt\\
+&+&\frac{\mu}{K}\int_{0}^{T} e^{\alpha 
+t}\left[rn-\bar{r}\bar{n}\right](r-\bar{r})dt+\frac{\mu}{K}\int_{0}^{T}e^{\alpha
+ t}(\phi_1-\bar{\phi}_1)\{[\phi_1(n+s)+\phi_2 i +\phi_3 r]dt\\
+&+&[\bar{\phi}_1(\bar{n}+\bar{s})+\bar{\phi}_2 \bar{i} +\bar{\phi}_3 
+\bar{r}]\}dt+\mu\int_{0}^{T}(\phi_1-\bar{\phi_1})^2dt\\
+&+&\beta\int_{0}^{T}e^{\alpha 
+t}(\phi_1-\bar{\phi}_1)\left[\frac{i(n-s)}{n^2}(\phi_1-\phi_2)-\frac{\bar{i}(\bar{n}-\bar{s})}{\bar{n}^2}(\bar{\phi}_1-\bar{\phi}_2)\right]dt\\
+&+&\int_{0}^{T} 
+(\phi_1-\bar{\phi}_1)[\nu(\phi_1-\phi_3)-\bar{\nu}(\bar{\phi_1}-\bar{\phi_3}))]dt+\frac{\mu}{K}\int_{0}^{T}e^{\alpha
+ t}(\phi_1s-\bar{\phi}_1\bar{s})(\phi_2-\bar{\phi_2})dt\\
+&+&\mu\int_{0}^{T}(\phi_1-\bar{\phi_1})(\phi_2-\bar{\phi_2})dt+\frac{\mu}{K}\int_{0}^{T}e^{\alpha
+ t}[\phi_2(n+i)-\bar{\phi}_2(\bar{n}+\bar{i}) \nonumber\\
+&+& (\phi_3 
+r-\bar{\phi_3}\bar{r})](\phi_2-\bar{\phi}_2)dt+\beta\int_{0}^{T}\left[\frac{s(n-i)}{n^2}(\phi_1-\phi_2)-\frac{\bar{s}(\bar{n}-\bar{i})}{\bar{n}^2}(\bar{\phi}_1-\bar{\phi}_2)\right]
+ \nonumber\\
+&+&(\phi_2-\bar{\phi_2})dt+\delta\int_{0}^{T}(\phi_2-\bar{\phi_2})^2dt 
++\gamma\int_{0}^{T}[(\phi_2-\phi_3)-(\bar{\phi}_2-\bar{\phi}_3)](\phi_2-\bar{\phi_2})dt
+ \nonumber\\
+&+&\int_{0}^{T}[\tau(\phi_2-\phi_3)-\bar{\tau}(\bar{\phi}_2-\bar{\phi}_3)](\phi_2-\bar{\phi_2})dt\\&+&
+\frac{m B_2}{K^m}\int_{0}^{T}e^{m\alpha 
+t}[\nu^2r^{m-1}-\bar{\nu}^2\bar{r}^{m-1}](\phi_3-\bar{\phi}_3)dt\\
+&+&\frac{\mu}{K}\int_{0}^{T}e^{\alpha t}(\phi_1 
+s-\bar{\phi_1}\bar{s})(\phi_3-\bar{\phi_3})dt 
++\mu\int_{0}^{T}(\phi_1-\bar{\phi_1})(\phi_3-\bar{\phi_3})dt\nonumber\\
+&+&\beta\int_{0}^{T}\left[\frac{s i}{n^2}(\phi_2-\phi_1)-\frac{\bar{s} 
+\bar{i}}{\bar{n}^2}(\bar{\phi}_2-\bar{\phi}_1)\right](\phi_3-\bar{\phi_3})dt+\frac{\mu}{K}\int_{0}^{T}e^{\alpha
+ t}\{[ \nonumber\\
+&&\phi_2 i+\phi_3(n+r)]-[\bar{\phi}_2 
+\bar{i}+\bar{\phi}_3(\bar{n}+\bar{r})]\}(\phi_3-\bar{\phi_3})dt. 
+\end{eqnarray*}
+
+Now we factorizing and applied the bounds and get
+
+\begin{eqnarray*}
+\frac{1}{2}[\Psi(T)&+&\Phi(0)]+\alpha\int_{0}^{T}[\Psi(t)+\Phi(t)]dt\leq \mu 
+C\int_{0}^{T}[(\bar{n}-n)^2+(\bar{s}-s)^2]dt\\
+&+&\beta 
+C\int_{0}^{T}\left[(\bar{i}-i)^2+\left(\frac{si}{n}-\frac{\bar{s}\bar{i}}{\bar{n}}\right)^2\right]dt+\gamma
+ C\int_{0}^{T}[(i-\bar{i})^2+(r-\bar{r})^2]dt\\
+&+&C\int_{0}^{T}[(\tau-\bar{\tau})^2+(i-\bar{i})^2+(r-\bar{r})^2]dt+C\int_{0}^{T}[(\nu-\bar{\nu})^2+(s-\bar{s})^2+(r-\bar{r})^2]dt\\
+&+&\frac{\mu}{K}e^{\alpha T}C\int_{0}^{T}(\phi_1-\bar{\phi_1})^2dt+\beta 
+e^{\alpha T}\int_{0}^{T}[(\phi_1-\bar{\phi_1})^2+\Psi(t)+\Phi(t)]dt\\
+&+&\int_{0}^{T}[(\phi_1-\bar{\phi_1})^2+(\nu-\bar{\nu})^2+(\phi_1-\bar{\phi_1})^2+(\phi_3-\bar{\phi_3})^2]dt\\
+&+&\frac{\mu}{K}e^{\alpha 
+T}C\int_{0}^{T}[(\phi_1-\bar{\phi_1})^2+(s-\bar{s})^2+(\phi_2-\bar{\phi_2})^2]dt+\frac{\mu}{K}e^{\alpha
+ T}C\int_{0}^{T}(\phi_2-\bar{\phi_2})^2dt\\
+&+& \beta 
+C\int_{0}^{T}[\Psi(t)+\Phi(t)]dt+\delta\int_{0}^{T}(\phi_2-\bar{\phi_2})^2dt+\gamma
+ C\int_{0}^{T}[(\phi_2-\bar{\phi_2})^2+(\phi_3-\bar{\phi_3})^2]dt\\
+&+& 
+C\int_{0}^{T}[(\tau-\bar{\tau})^2+(\phi_2-\bar{\phi_2})^2+(\phi_3-\bar{\phi_3})^2]dt\\
+&+&Ce^{2\alpha 
+T}\int_{0}^{T}[(r-\bar{r})^2(\bar{\nu}^2-\nu^2)^2+(\phi_3-\bar{\phi_3})^2]dt\\
+&+&\frac{\mu}{K}e^{\alpha 
+T}C\int_{0}^{T}[(s-\bar{s})^2+(\phi_1-\bar{\phi_1})^2+(\phi_3-\bar{\phi_3})^2]dt
+ + \frac{\mu}{K}e^{\alpha T}C\int_{0}^{T}[(\phi_3-\bar{\phi_3})^2\Psi(t)]dt\\
+&+&\beta C\int_{0}^{T}[\Psi (t)+\Phi(t)]dt.
+\end{eqnarray*}
+
+The next steps are to apply the bounds on the controls
+
+
+
+
+
+
+
+
+
+

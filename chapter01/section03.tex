@@ -1,0 +1,225 @@
+\section{Existence Theory}
+Let $T\in (0,\infty)$ be fixed. Consider the control system 
+
+$$\left\{ \begin{array}{l}
+	\dot{X}(s)=f(s,u(s),X(s)\,\,s\in [t,T], \\
+	X(t)=x,\\
+\end{array}
+\right.$$
+
+with termimal state constraint
+
+$$X(T;t,x,u(\cdot))\in M,$$
+
+where $M\subseteq \mathbb{R}^n$ is fixed, and with cost functional
+
+\begin{equation*}
+J^T(t,x;u(\cdot))=\int_{t}^{T}g(s,u(s),X(s))ds + h(X(T)).
+\end{equation*}
+
+We recall 
+
+$$\tilde{\mathcal{U}}^M_x[t,T]=\{u(\cdot)\in\mathcal{U}[t,T] | 
+X(T;t,x,u(\cdot))\in M\},$$
+
+and recall the following optimal control problem:
+
+Problem $(OC)^T$. For given $(t,x)\in \mathbb{R}_{+}\times \mathbb{R}^n$ with 
+$\tilde{\mathcal{U}}^M_x[t,T]\neq\emptyset$, find a $\bar{u}(\cdot)\in 
+\tilde{\mathcal{U}}^M_x[t,T]$ such that
+
+\begin{equation}\label{eq2.4} 
+J^T(t,x;\bar{u}(\cdot))=\inf_{u(\cdot)\in \tilde{\mathcal{U}}^M_x[t,T]} 
+J^T(t,x;u(\cdot))\equiv V(t,x).
+\end{equation}
+
+Any $\bar{u}(\cdot)\in \tilde{\mathcal{U}}^M_x[t,T]$ satisfying (\ref{eq2.4}) 
+is called an optimal control, the corresponding $\bar{X}(\cdot)\equiv 
+X(\cdot;t,x,\bar{u}(\cdot))$ is called an optimal state trajectory, and 
+$(\bar{u}(\cdot),\bar{X}(\cdot))$ is called optimal pair, we call 
+$V(\cdot,\cdot)$ the value functional of problem $(OC)^T$.
+
+We introduce the following assumption for the cost functional:
+
+(C2) The maps $g:\mathbb{R}_{+}\times U\times \mathbb{R}^n\rightarrow 
+\mathbb{R}$ and $h.\mathbb{R}^n\rightarrow \mathbb{R}$ are measurable and there 
+exists a continuous function 
+$\omega:\mathbb{R}_{+}\times\mathbb{R}_{+}\rightarrow \mathbb{R}_{+}$, called a 
+local modulus of continuity, which is increasing in each argument, and 
+$\omega(r,0)=0$ for every $r\geq 0$, such that 
+
+$$|g(s,u,x_1)-g(s,u,x_2)|+|h(x_1)-h(x_2)|\leq \omega(|x_1|\vee 
+|x_2|,|x_1-x_2|)\,\,\mbox{for every}\, (s,u)\in \mathbb{R}_{+}\times 
+U,x_1,x_2\in \mathbb{R}^n,$$
+
+where $|x_1|\vee |x_2|=\max\{|x_1|,|x_2|\}$, and
+
+$$\sup_{(s,u)\in \mathbb{R}_{+}\times U}|g(s,u,0)|\equiv g_0<\infty.$$
+
+%In what follows, $\omega(\cdot.\cdot)$ will stand for a generic local modulus 
+%of continuity which can be different from line to line.
+
+For any $(t,x)\in [0,T]\times\mathbb{R}^n$, let us introduce the following set
+
+$$\mathbb{E}(t,x)=\{(z^0,z)\in \mathbb{R}\times \mathbb{R}_{+}|z^0\geq 
+g(t,u,x),z=f(t,u,x),\, u\in U\}.$$
+
+The following assumption gives some compability between the control system and 
+the cost functional.
+
+(C3) For almost all $t\in [0,T]$, the following Cesari property holds at any 
+$x\in \mathbb{R}^n$,
+
+$$\bigcap_{\delta>0}\bar{co}\mathbb{E}(t,B_{\delta}(x))=\mathbb{E}(t,x),$$
+
+where, we recall that $B_{\delta}(x)$ is the open ball centered at $x$ with 
+radius $\delta>0$, and $\bar{co}(E)$ stands for the closed convex hull of the 
+set $E$ (the smallest closed convex set containing E).
+
+It is cleary that if $\mathbb{E}(t,x)$ has Cesari property at $x$, the 
+$\mathbb{E}(t,x)$ is convex and closed.
+
+\begin{theorem}\label{ExistsTheo}
+	Let (C1)-(C3) hold. Let $M\subseteq \mathbb{R}^n$ be a non-empty closed 
+	set. Let $(t,x)\in [0,T]\times\mathbb{R}^n$ be given and 
+	$\tilde{\mathcal{U}}^M_x[t,T]\neq \emptyset$. Then problem $(OC)^T$ admits 
+	at least one optimal pair.
+\end{theorem}
+
+\begin{proof}
+Let $u_k(\cdot)\in\tilde{\mathcal{U}}^M_x[t,T]$ be a minimizing sequence. By 
+proposition (\ref{prop2.1.1})
+
+\begin{equation}\label{eq2.5}
+|X_k(s)|\leq e^{L(s-t)}(1+|x|)-1,\,s\in [t,T]\,\,k\geq 1.
+\end{equation}
+
+and for any $t\leq \tau<s\leq T$,
+
+\begin{eqnarray*}
+|X_k(s)-X_k(\tau)|&=& |X(s;t,x,u_k(\cdot))-X(\tau;t,x,u(\cdot))|\\
+&\leq& [e^{L(s-\tau)}-1][1+X(\tau;t,x,u_k(\cdot))]\\
+&\leq& [e^{L(s-\tau)}-1]e^{L(\tau-t)}(1+|x|).
+\end{eqnarray*}
+
+Hence, the sequence $\{X_k(\cdot)\}$ is uniformly bounded and equicontinuous. 
+Therefore, By Arzela-Ascoli Theorem (\ref{AAT}), we may assume that the 
+sequence is convergent to some $\bar{X}(\cdot)$ in $C([t,T];\mathbb{R}^n)$. On 
+the other hand,
+
+$$|f(d,u_k(s),X_k(s)|\leq L(1+|X_k(s))\leq Le^{L(s-t)}(1+|x|).$$
+
+Also, by (\ref{eq2.5}) and (C2), we have
+
+\begin{eqnarray*}
+|g(s,u_k(s),X_k(s))|&\leq& |g(s,u_k(s),0)|+|g(s,u_k(s),X_k(s))-g(s,u_k(s),0)|\\
+&\leq& g_0+ \omega(|X_k(s)|,|X_k(s)|)\leq 
+g_0+\omega(e^{LT}(1+|x|),e^{LT}(1+|x|))\\
+&\leq& K,\,s\in [t,T],\,k\geq 1.
+\end{eqnarray*}
+
+Hence, by exctrcting a subsequence if necessary, we may assume that
+
+$$\left\{ \begin{array}{l}
+g(\cdot,u_k(\cdot),X_k(\cdot))\rightarrow \bar{g}(\cdot),\,\mbox{weakly in}\, 
+L^2([t,T];\mathbb{R}^n), \\
+f(\cdot,u_k(\cdot),X_k(\cdot))\rightarrow \bar{f}(\cdot),\,\mbox{weakly in}\, 
+L^2([t,T];\mathbb{R}^n),\\
+\end{array}
+\right.$$
+
+for some $\bar{g}(\cdot)$ and $\bar{f}(\cdot)$. Then by Banach-Saks Theorem 
+(\ref{BST}), we have
+
+\begin{equation}\label{eq2.6}
+\left\{ \begin{array}{l}
+\tilde{g}_k(\cdot):=\frac{1}{k}\sum_{i=1}^{k}g(\cdot,u_i(\cdot),X_i(\cdot))\rightarrow
+ \bar{g}(\cdot),\,\mbox{strongly in}\, L^2([t,T];\mathbb{R}^n), \\
+\tilde{f}_k(\cdot):=\frac{1}{k}\sum_{i=1}^{k}f(\cdot,u_i(\cdot),X_i(\cdot))\rightarrow
+ \bar{f}(\cdot),\,\mbox{strongly in}\, L^2([t,T];\mathbb{R}^n).\\
+\end{array}
+\right.
+\end{equation}
+
+On the other hand, by (C1) and the convergence of $X_k(\cdot)\rightarrow 
+\bar{X}(\cdot)$ in $C([t,T];\mathbb{R}^n)$, we have
+
+\begin{eqnarray*}
+|\tilde{f}_k(s)-\frac{1}{k}\sum_{i=1}^{k}f(s,u_i(s),\bar{X}(s)|&\leq& 
+\frac{1}{k}\sum_{i=1}^{k}|f(s,u_i(s),X_i(s))-f(s,u_i(s),\bar{X}(s))|\\
+&\leq&\frac{1}{k}\sum_{i=1}^{k}|X_i(s)-\bar{X}(s)|\rightarrow 0\,\,k\rightarrow 
+\infty,
+\end{eqnarray*}
+
+uniformly in $s\in [t,T]$. Similarly, by (C2),
+
+\begin{eqnarray*}
+	|\tilde{g}_k(s)-\frac{1}{k}\sum_{i=1}^{k}g(s,u_i(s),\bar{X}(s)|&\leq& 
+	\frac{1}{k}\sum_{i=1}^{k}|g(s,u_i(s),X_i(s))-g(s,u_i(s),\bar{X}(s))|\\
+	&\leq&\frac{1}{k}\sum_{i=1}^{k}\omega(|X_i(s)|\vee 
+	|\bar{X}(s)|,|X_i(s)-\bar{X}(s)|)\rightarrow 0\,\,k\rightarrow \infty,
+\end{eqnarray*}
+
+uniformly in $s\in [t,T]$. Next, by the definition of $\mathbb{E}(t,x)$, we have
+
+$$\begin{pmatrix}
+	g(s,u_i(s),X_i(s)) \\ f(s,u_i(s),X_i(s))
+\end{pmatrix} \in \mathbb{E}(s,X_i(s)),\,i\geq 1,\, s\in [t,T].$$
+
+Hence, for any $\delta>0$, there exits a $K_{\delta}>0$ such that 
+
+\begin{equation}\label{eq2.7}
+	\begin{pmatrix}
+		\tilde{g}_k(s) \\ \tilde{f}_k(s)
+	\end{pmatrix}\in \bar{co}\mathbb{E}(s,B_{\delta}(\bar{X}(s))),\, K\geq 
+	K_{\delta},\, s\in[t,T].
+\end{equation}
+
+Combinig (\ref{eq2.6}) and (\ref{eq2.7}), using (C3), we obtain
+
+\begin{equation*}
+\begin{pmatrix}
+\bar{g}(s) \\ \bar{f}(s)
+\end{pmatrix}=\lim_{k\rightarrow \infty}\begin{pmatrix}
+\tilde{g}_k(s) \\ \tilde{f}_k(s)
+\end{pmatrix}\in 
+\bigcap_{\delta>0}\bar{co}\mathbb{E}(s,B_{\delta}(\bar{X}(s)))=\mathbb{E}(s,\bar{X}(s)).
+\end{equation*}
+
+Then by Filippov's Lemma (\ref{FL}), there exits a $\bar{u}(\cdot)\in 
+\mathcal{U}[t,T]$ such that
+
+$$\bar{g}(s)\geq 
+g(s,\bar{u}(s),\bar{X}(s)),\,\bar{f}(s)=f(s,\bar{u}(s),\bar{X}(s)),\, s\in 
+[t,T].$$
+
+This means $\bar{X}(\cdot)=X(\cdot;t,x,\bar{u})$. On the other hand, since
+
+$$\bar{X}_k(T)\equiv X(T;t,x,\bar{u}_k(\cdot))\in M,\, k\geq 1$$
+
+one has 
+
+$$\bar{X}(T)\equiv X(T;t,x,\bar{u}(\cdot))\in M,$$
+
+which means that $\bar{u}(\cdot)\in \tilde{\mathcal{U}}^M_x[t,T]$. finally, by 
+Fatou's Lemma
+
+\begin{eqnarray*}
+J^T(t,x;\bar{u}(\cdot))&\leq& \int_{t}^{T}\bar{g}(s)ds +h(\bar{X}(T))\\
+&\leq& \liminf_{k\rightarrow \infty}[\int_{t}^{T}\tilde{g}_k(s)ds+h(X_k(T))]\\
+&=&\lim_{k\rightarrow \infty} \frac{1}{k}J^T(t,x;u_i(\cdot))\\
+\lim_{k\rightarrow \infty} J^T(t,x;u_k(\cdot))\\
+&=& \inf_{u(\cdot)\in\tilde{\mathcal{U}}^M_x[t,T]}J^T(t,x;u(\cdot)).
+\end{eqnarray*}
+
+This means that $(\bar{u}(\cdot),\bar{X}(\cdot))$ is an optimal pair.
+
+\end{proof}
+
+
+
+
+
+
+
+
